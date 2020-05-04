@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="sidebar-wrap">
-      <MainSideBar />
+      <ProjectsSideBar />
     </div>
     <router-view />
   </div>
@@ -14,12 +14,12 @@
 </style>
 <script>
 // @ is an alias to /src
-import MainSideBar from "@/components/MainSideBar.vue";
+import ProjectsSideBar from "@/components/ProjectsSideBar.vue";
 
 export default {
-  name: "Home",
+  name: "Projects",
   components: {
-    MainSideBar
+    ProjectsSideBar
   }
 };
 </script>

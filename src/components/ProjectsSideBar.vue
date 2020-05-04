@@ -20,16 +20,15 @@
 </style>
 <script>
 export default {
-  name: "MainSideBar",
+  name: "ProjectsSideBar",
 
   data() {
     return {
       items: [
-        { title: "Gunlight", icon: "mdi-image", path: "Index" },
-        { title: "ITEM", icon: "mdi-view-dashboard", path: "Second" },
+        { title: "Gunlight", icon: "mdi-pistol", path: "Index" },
+        { title: "NeosDB", icon: "mdi-server-network", path: "Second" },
         { title: "Thing", icon: "mdi-help-box", path: "" }
-      ],
-      right: null
+      ]
     };
   }
 };

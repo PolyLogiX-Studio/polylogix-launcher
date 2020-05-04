@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Projects',
     children: [
       {
         name: "Home-Index",
@@ -20,15 +20,17 @@ const routes = [
         component: () => import("../views/Home/Second.vue")
       }
     ],
-    component: () => import('../views/Home.vue')
+    component: () => import('../views/Projects.vue')
   },
   {
     path: '/Servers',
     name: 'Servers',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../views/Servers.vue')
+  },
+  {
+    path: '/About',
+    name: 'About',
+    component: () => import('../views/About.vue')
   }
 ]
 

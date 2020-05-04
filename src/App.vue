@@ -13,9 +13,13 @@
       </div> 
       <div class="app-bar-content-nograb">
         <v-tabs background-color="primary">
-          <v-tab to="/">Projects</v-tab>
-          <v-tab to="/Servers">Server Browser</v-tab>
-          <v-tab to="/Thing">Plugins</v-tab>
+          <v-tab to="/"><v-icon>mdi-code-braces</v-icon>Projects</v-tab>
+          <v-tab to="/Servers"><v-icon>mdi-server</v-icon>Server Browser</v-tab>
+          <v-tab to="/Thing"><v-icon>mdi-toy-brick-plus</v-icon>Plugins</v-tab>
+          <v-tab to="/Account"><v-icon>mdi-account</v-icon>My Account</v-tab>
+          <v-tab to="/Neos"><v-icon>mdi-microsoft-azure</v-icon>Neos</v-tab>
+          <v-tab to="/Settings"><v-icon>mdi-tune-vertical</v-icon>Settings</v-tab>
+          <v-tab to="/About"><v-icon>mdi-information-outline</v-icon>About</v-tab>
         </v-tabs>
       </div>
       
