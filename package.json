@@ -1,7 +1,9 @@
 {
   "name": "polylogix-launcher",
   "productName": "PolyLogiX Launcher",
+  "description":"Launcher for PolyLogiX",
   "version": "0.1.0",
+  "author": "Ethan Snow <polylogixstudio@gmail.com>",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
