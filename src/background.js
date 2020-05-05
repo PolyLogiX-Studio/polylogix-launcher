@@ -6,11 +6,45 @@ import {
   /* installVueDevtools */
 } from 'vue-cli-plugin-electron-builder/lib'
 const isDevelopment = process.env.NODE_ENV !== 'production'
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
+import fetch from 'node-fetch'
+import Store from 'electron-store'
+import fs from 'fs'
+const store = new Store({fileExtension:"", name:"dat", migrations:require("./db_migrations")});
+import VDF from './vdfParser'
+var neosDir = store.get("NeosDir")
+if (!neosDir) {
+  checkNeosDir()
+} else {
+  if (!fs.existsSync(neosDir)) {
+    checkNeosDir()
+  }
 
+}
+function checkNeosDir() {
+  if (fs.existsSync("C:/Program Files (x86)/Steam/steamapps/libraryfolders.vdf")) {
+    const steamfolders = VDF.parse(fs.readFileSync("C:/Program Files (x86)/Steam/steamapps/libraryfolders.vdf").toString())
+    var neosdir = null
+    for (var [key, value] of Object.entries(steamfolders.LibraryFolders)) {
+      if (parseInt(key)) {
+        if (fs.existsSync(`${value}\\steamapps\\common\\NeosVR`)) {
+          neosdir = `${value}\\steamapps\\common\\NeosVR`
+          break
+        }
+      }
+    }
+    if (!neosdir) {
+      console.log("Neos Not Found")
+    } else {
+      console.log("Found Neos at " + neosdir)
+      neosDir = neosdir
+      store.set("NeosDir", neosdir);
+    }
+  }
+
+}
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }])
 
@@ -18,7 +52,8 @@ function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
     'minWidth': 1600, 'minHeight': 800, resizable: true, frame: false, webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      "web-security": false
     }
   })
 
@@ -82,7 +117,6 @@ if (isDevelopment) {
 }
 function createListeners(win) {
   ipcMain.on("windowCommand", (e, cmd) => {
-    console.log("YES")
     switch (cmd) {
       case "minimize":
         return win.minimize()
@@ -97,5 +131,39 @@ function createListeners(win) {
         return win.close()
 
     }
+  })
+  let intervalStore = []
+  ipcMain.on("fetch-server-list-async", (event, interval) => {
+    if (!intervalStore.includes(interval) && interval != null) {
+      intervalStore.push(interval)
+    }
+
+    fetch("https://www.neosvr-api.com/api/sessions", { method: "GET" })
+      .then(res => res.json())
+      .then(json => {
+        event.reply("server-list-update-async", json, intervalStore)
+
+        if (intervalStore.length != 1) {
+          intervalStore = [interval]
+        }
+      })
+  })
+
+
+
+
+  win.webContents.on("new-window", function (event, url) {
+    event.preventDefault();
+    let JoinWindow = new BrowserWindow({
+      show: false, webPreferences: {
+        nodeIntegration: true,
+        "web-security": false
+      }
+    });
+    JoinWindow.loadURL(url)
+    setTimeout(() => {
+      JoinWindow.close()
+      JoinWindow = null
+    }, 5000)
   })
 }

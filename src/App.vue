@@ -53,6 +53,14 @@
   background-repeat: no-repeat;
   height: 100vh;
 }
+.about-index {
+  background-image: url("./assets/Animated_Banner_1.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
 </style>
 <script>
 import electron from 'electron'

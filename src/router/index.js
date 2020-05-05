@@ -12,12 +12,12 @@ const routes = [
         name: "Home-Index",
         path: "Index",
         alias: "",
-        component: () => import("../views/Home/Index.vue")
+        component: () => import("../views/Projects/Index.vue")
       },
       {
         name: "Home-Second",
         path: "Second",
-        component: () => import("../views/Home/Second.vue")
+        component: () => import("../views/Projects/Second.vue")
       }
     ],
     component: () => import('../views/Projects.vue')

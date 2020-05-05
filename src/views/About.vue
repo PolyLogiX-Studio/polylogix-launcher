@@ -1,5 +1,13 @@
 <template>
-  <div>
-        <video ref="videoPlayer" class="video-js"></video>
-    </div>
+<div class="about-index">
+</div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+    };
+  }
+};
+</script>

@@ -3,12 +3,12 @@ module.exports = {
     "vuetify"
   ],
   pluginOptions:{
-    electronBuilder:{
-      builderOptions:{
+    electronBuilder: {
+      builderOptions: {
         win: {
           icon: './src/assets/icon.ico'
         }
       }
-    }
+    },
   }
 }

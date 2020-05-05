@@ -25,9 +25,8 @@ export default {
   data() {
     return {
       items: [
-        { title: "Gunlight", icon: "mdi-pistol", path: "Index" },
-        { title: "NeosDB", icon: "mdi-server-network", path: "Second" },
-        { title: "Thing", icon: "mdi-help-box", path: "" }
+        { title: "Gunlight Online", icon: "mdi-pistol", path: "Index" },
+        { title: "NeosDB", icon: "mdi-server-network", path: "Second" }
       ]
     };
   }
