@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer permanent clipped width="15em" height="100vh" dark>
+  <v-navigation-drawer permanent expand-on-hover clipped width="15em" height="100vh" dark>
     <v-list nav>
       <v-list-item v-for="item in items" :key="item.title" :to="item.path" link>
         <v-list-item-icon>
@@ -25,8 +25,10 @@ export default {
   data() {
     return {
       items: [
-        { title: "Gunlight Online", icon: "mdi-pistol", path: "Index" },
-        { title: "NeosDB", icon: "mdi-server-network", path: "Second" }
+        { title: "PolyLogiX Launcher", icon: "mdi-chart-tree", path: "Index" },
+        { title: "HeadlessCORE", icon: "mdi-server", path: "Headless" },
+        { title: "Gunlight Online", icon: "mdi-pistol", path: "Gunlight" },
+        { title: "NeosDB", icon: "mdi-database-search", path: "NeosDB" }
       ]
     };
   }

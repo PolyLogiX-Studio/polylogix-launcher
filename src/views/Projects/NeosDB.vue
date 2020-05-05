@@ -1,5 +1,6 @@
 <template>
-  <div class="home-second">This is also working</div>
+  <div class="home-neosdb">
+  </div>
 </template>
 <style>
 </style>
@@ -7,7 +8,7 @@
 // @ is an alias to /src
 
 export default {
-  name: "Home-Second",
+  name: "Home-NeosDB",
   components: {}
 };
 </script>

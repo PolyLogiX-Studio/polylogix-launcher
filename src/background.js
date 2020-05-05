@@ -156,7 +156,6 @@ var Neos = null
 function LaunchNeos(){
   Neos = child_process.spawn(path.join(store.get("NeosDir"),"Neos.exe"),[],{detached:true})
   win.minimize()
-  win.hide();
   Neos.on('close', ()=>{
     win.maximize()
   })

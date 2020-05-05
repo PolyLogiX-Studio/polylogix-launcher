@@ -12,12 +12,22 @@ const routes = [
         name: "Home-Index",
         path: "Index",
         alias: "",
-        component: () => import("../views/Projects/Index.vue")
+        component: () => import("../views/Projects/PolyLogiXLauncher.vue")
       },
       {
-        name: "Home-Second",
-        path: "Second",
-        component: () => import("../views/Projects/Second.vue")
+        name: "Home-HeadlessCore",
+        path: "Headless",
+        component: () => import("../views/Projects/HeadlessCore.vue")
+      },
+      {
+        name: "Home-Gunlight",
+        path: "Gunlight",
+        component: () => import("../views/Projects/Gunlight.vue")
+      },
+      {
+        name: "Home-NeosDB",
+        path: "NeosDB",
+        component: () => import("../views/Projects/NeosDB.vue")
       }
     ],
     component: () => import('../views/Projects.vue')
