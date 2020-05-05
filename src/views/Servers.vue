@@ -14,7 +14,7 @@
               <v-icon v-if="item.headlessHost" :color="item.headlessCORE?'primary':''">mdi-server</v-icon>
               <v-icon v-if="item.mobileFriendly">mdi-cellphone-iphone</v-icon>
               <v-icon v-if="item.plugins" :color="item.pluginMatchStatus">mdi-toy-brick-plus</v-icon>
-              <v-icon v-if="item.warning" :color="item.warningSeverity">mdi-account-arrow-right-outline</v-icon>
+              <v-icon v-if="item.warning&&!item.headlessHost" :color="item.warningSeverity">mdi-account-arrow-right-outline</v-icon>
               {{item.name}}
                <v-icon color="success" v-if="item.verified">mdi-check-decagram</v-icon>
             </h3>
@@ -107,7 +107,7 @@ export default {
         this.loading = false;
         this.dataRaw = servers;
         let filteredData = this.dataRaw.filter(server => {
-          return (
+          return (true||
             server.sessionUsers.length > 1 ||
             (server.sessionUsers.length == 1 &&
               !server.headlessHost &&

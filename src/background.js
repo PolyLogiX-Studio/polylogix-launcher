@@ -1,6 +1,7 @@
 'use strict'
-
-import { app, protocol, BrowserWindow, ipcMain } from 'electron'
+import child_process from 'child_process'
+import { app, protocol, BrowserWindow, ipcMain, Menu, Tray } from 'electron'
+import path from 'path'
 import {
   createProtocol,
   /* installVueDevtools */
@@ -116,6 +117,9 @@ if (isDevelopment) {
   }
 }
 function createListeners(win) {
+  ipcMain.on("LAUNCH-NEOS", ()=>{
+    LaunchNeos()
+  })
   ipcMain.on("windowCommand", (e, cmd) => {
     switch (cmd) {
       case "minimize":
@@ -148,8 +152,15 @@ function createListeners(win) {
         }
       })
   })
-
-
+var Neos = null
+function LaunchNeos(){
+  Neos = child_process.spawn(path.join(store.get("NeosDir"),"Neos.exe"),[],{detached:true})
+  win.minimize()
+  win.hide();
+  Neos.on('close', ()=>{
+    win.maximize()
+  })
+}
 
 
   win.webContents.on("new-window", function (event, url) {
@@ -167,3 +178,12 @@ function createListeners(win) {
     }, 5000)
   })
 }
+var contextMenu = Menu.buildFromTemplate([
+  { label: 'Show App', click:  function(){
+      win.show();
+  } },
+  { label: 'Quit', click:  function(){
+      app.isQuiting = true;
+      app.quit();
+  } }
+]);

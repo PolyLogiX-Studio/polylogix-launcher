@@ -1,0 +1,165 @@
+10:43:44 PM.587 ( -1 FPS)	Autodetected: Screen
+10:43:44 PM.592 ( -1 FPS)	Platform: WindowsPlayer, loaded VR device: Loaded device name: , StereoRenderingMode: MultiPass
+10:43:45 PM.324 (  0 FPS)	Initializing Neos: Beta 2020.5.4.1227, Processor Count: 8, Max GC Generation: 0, IsLittleEndian: True, HeadDevice: Screen
+10:43:45 PM.324 (  0 FPS)	5.11.0 (Visual Studio built mono)
+10:43:45 PM.324 (  0 FPS)	Argument: F:\SteamLibrary\steamapps\common\NeosVR\Neos.exe
+10:43:45 PM.347 (  0 FPS)	Compatibility Hash: xY1UOwC3K2o+70FP/vw9dw==
+10:43:46 PM.068 (  0 FPS)	FreeImage Version: 3.18.0
+10:43:46 PM.068 (  0 FPS)	FreeType Version: 2.10.0
+10:43:47 PM.283 (  0 FPS)		Reading settings file
+10:43:47 PM.302 (  0 FPS)		Performing version checks and updates, loaded version: 6
+10:43:47 PM.303 (  0 FPS)	MachineID: cxwphbzdjeal8wj7hzq_ca
+10:43:47 PM.494 (  0 FPS)		Configuring LiteDB database
+10:43:47 PM.588 (  0 FPS)	Saving Settings
+10:43:47 PM.654 (  0 FPS)	Graphics Device Type: Direct3D11
+10:43:47 PM.683 (  0 FPS)	AudioSystem SampleRate: 48000, BufferLength: 1024, NumBuffers: 4
+10:43:47 PM.816 (  0 FPS)	Executable: F:\SteamLibrary\steamapps\common\NeosVR\RuntimeData\Neosmon\NeosmonServer.exe
+10:43:48 PM.063 (  0 FPS)	Local User SteamID: 76561198084108249
+10:43:48 PM.064 (  0 FPS)	SteamAPI initialized
+10:43:48 PM.100 (  0 FPS)	Supported network protocols: lnl-nat, lnl, neos-steam
+10:43:48 PM.100 (  0 FPS)	FrooxEngine Initialized in 2776.8347 ms
+10:43:48 PM.108 (  0 FPS)	Initializing CSCore Audio Input Driver
+10:43:48 PM.131 (  0 FPS)	Initialized Audio Input MMDevice CABLE Output (VB-Audio Virtual Cable), ID: {0.0.1.00000000}.{27aa08a5-11b4-4a87-9284-b84ea1380e43}, Format: ChannelsAvailable: 2|SampleRate: 44100|Bps: 264600|BlockAlign: 6|BitsPerSample: 24|Encoding: Extensible|SubFormat: 00000001-0000-0010-8000-00aa00389b71|ChannelMask: SpeakerFrontLeft, SpeakerFrontRight
+10:43:48 PM.132 (  0 FPS)	Initialized Audio Input MMDevice Microphone (Virtual Desktop Audio), ID: {0.0.1.00000000}.{3df72788-e632-4225-8dac-a1cbe867f8f3}, Format: ChannelsAvailable: 1|SampleRate: 44100|Bps: 88200|BlockAlign: 2|BitsPerSample: 16|Encoding: Extensible|SubFormat: 00000001-0000-0010-8000-00aa00389b71|ChannelMask: SpeakerFrontCenter
+10:43:48 PM.132 (  0 FPS)	Initialized Audio Input MMDevice Microphone (Steam Streaming Microphone), ID: {0.0.1.00000000}.{498e1399-049d-464a-a7e7-971379ec3d9e}, Format: ChannelsAvailable: 1|SampleRate: 44100|Bps: 88200|BlockAlign: 2|BitsPerSample: 16|Encoding: Extensible|SubFormat: 00000001-0000-0010-8000-00aa00389b71|ChannelMask: SpeakerFrontCenter
+10:43:48 PM.132 (  0 FPS)	Initialized Audio Input MMDevice VoiceMeeter Output (VB-Audio VoiceMeeter VAIO), ID: {0.0.1.00000000}.{4fcdd9da-b9a9-429e-8f60-5e5fd382751e}, Format: ChannelsAvailable: 2|SampleRate: 44100|Bps: 264600|BlockAlign: 6|BitsPerSample: 24|Encoding: Extensible|SubFormat: 00000001-0000-0010-8000-00aa00389b71|ChannelMask: SpeakerFrontLeft, SpeakerFrontRight
+10:43:48 PM.134 (  0 FPS)	Initialized Audio Input MMDevice VoiceMeeter Aux Output (VB-Audio VoiceMeeter AUX VAIO), ID: {0.0.1.00000000}.{8510075a-d1c4-45e5-9925-a7e5cb05d31d}, Format: ChannelsAvailable: 2|SampleRate: 44100|Bps: 264600|BlockAlign: 6|BitsPerSample: 24|Encoding: Extensible|SubFormat: 00000001-0000-0010-8000-00aa00389b71|ChannelMask: SpeakerFrontLeft, SpeakerFrontRight
+10:43:48 PM.135 (  0 FPS)	Initialized Audio Input MMDevice Microphone (2- Razer Kiyo), ID: {0.0.1.00000000}.{909d5b2a-85a4-49fb-a679-6b0af3a943a3}, Format: ChannelsAvailable: 2|SampleRate: 16000|Bps: 64000|BlockAlign: 4|BitsPerSample: 16|Encoding: Extensible|SubFormat: 00000001-0000-0010-8000-00aa00389b71|ChannelMask: SpeakerFrontLeft, SpeakerFrontRight
+10:43:48 PM.135 (  0 FPS)	Initialized Audio Input MMDevice Microphone (Razer Seiren X), ID: {0.0.1.00000000}.{a073827b-d5fb-4e4a-9dd8-4a8555616689}, Format: ChannelsAvailable: 2|SampleRate: 44100|Bps: 176400|BlockAlign: 4|BitsPerSample: 16|Encoding: Extensible|SubFormat: 00000001-0000-0010-8000-00aa00389b71|ChannelMask: SpeakerFrontLeft, SpeakerFrontRight
+10:43:48 PM.662 (  0 FPS)	Starting running world: 
+10:43:48 PM.737 (  0 FPS)	Parsing Config.json file
+10:43:48 PM.740 (  0 FPS)	Excepting parsing the config file: System.IO.FileNotFoundException: Could not find file "D:\Documents\GitHub\PolyLogiX-Launcher\polylogix-launcher\Config.json"
+File name: 'D:\Documents\GitHub\PolyLogiX-Launcher\polylogix-launcher\Config.json'
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <437ba245d8404784b9fbab9b439ac908>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options, System.String msgPath, System.Boolean bFromProxy, System.Boolean useLongPath, System.Boolean checkHost) [0x00000] in <437ba245d8404784b9fbab9b439ac908>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions,string,bool,bool,bool)
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, System.Boolean detectEncodingFromByteOrderMarks, System.Int32 bufferSize, System.Boolean checkHost) [0x00067] in <437ba245d8404784b9fbab9b439ac908>:0 
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, System.Boolean detectEncodingFromByteOrderMarks, System.Int32 bufferSize) [0x00000] in <437ba245d8404784b9fbab9b439ac908>:0 
+  at System.IO.StreamReader..ctor (System.String path, System.Boolean detectEncodingFromByteOrderMarks) [0x0000d] in <437ba245d8404784b9fbab9b439ac908>:0 
+  at System.IO.StreamReader..ctor (System.String path) [0x00000] in <437ba245d8404784b9fbab9b439ac908>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamReader..ctor(string)
+  at System.IO.File.ReadAllText (System.String path) [0x00000] in <437ba245d8404784b9fbab9b439ac908>:0 
+  at FrooxEngine.Userspace.OnAttach () [0x00057] in <1521eeb89d5747d39755fd3f393d38f4>:0 
+10:43:48 PM.741 (  0 FPS)	Running default bootstrap
+10:43:50 PM.243 (  0 FPS)	User Bitman Role: Admin, HasFingerTracking: False, HasEyeTracking: False, HasLipTracking: False
+10:43:50 PM.575 (  0 FPS)	Has LeftTool: False, Has RightTool: False
+10:43:50 PM.583 (  0 FPS)	Setting URL: local://cxwphbzdjeal8wj7hzq_ca/PgOvbV2eDkWt2q6HipQI_w.lz4bson
+10:43:50 PM.861 (  0 FPS)	Local Home file not found, creating a new one. Fetched homeUrl: local://cxwphbzdjeal8wj7hzq_ca/tVyJvNbD60ODgzxDw9npXA.lz4bson, record: {"id":"R-Home","ownerId":"M-cxwphbzdjeal8wj7hzq_ca","assetUri":"local://cxwphbzdjeal8wj7hzq_ca/tVyJvNbD60ODgzxDw9npXA.lz4bson","globalVersion":0,"localVersion":5,"lastModifyingUserId":"U-bombitmanbomb","lastModifyingMachineId":"cxwphbzdjeal8wj7hzq_ca","name":"Local","description":null,"recordType":"world","ownerName":null,"tags":[],"path":null,"thumbnailUri":null,"isPublic":false,"isForPatrons":false,"isListed":false,"lastModificationTime":"2020-03-24T17:57:16.717-04:00","rootRecordId":null,"creationTime":"2020-03-13T12:17:57.796-04:00","firstPublishTime":null,"visits":0,"rating":0,"submissions":null,"neosDBmanifest":null,"IsValidOwnerId":true,"IsValidRecordId":true}
+10:43:50 PM.864 (  0 FPS)	NetworkInitStart
+10:43:50 PM.870 (  0 FPS)	Creating Listener for host SteamID 76561198084108249, channel: 0, sessionId: 37f93972-8e55-4979-838d-fb532403f88f
+10:43:50 PM.874 (  0 FPS)	Starting running world: 
+10:43:53 PM.020 (  0 FPS)	Spawning User Bitman (ID2900)
+10:43:53 PM.025 (  0 FPS)	User Bitman Role: Admin, HasFingerTracking: False, HasEyeTracking: False, HasLipTracking: False
+10:43:53 PM.616 (  0 FPS)	Loaded unsynced record:
+{"id":"R-Settings","ownerId":"U-bombitmanbomb","assetUri":"local://cxwphbzdjeal8wj7hzq_ca/xwoCi7qw40-QmYYaGudZsA.lz4bson","globalVersion":495,"localVersion":497,"lastModifyingUserId":"U-bombitmanbomb","lastModifyingMachineId":"cxwphbzdjeal8wj7hzq_ca","name":"Settings","recordType":"object","ownerName":"bombitmanbomb","tags":["settings"],"path":null,"isPublic":false,"isForPatrons":false,"isListed":false,"lastModificationTime":"2020-03-24T17:57:16.528-04:00","creationTime":"2019-02-06T22:15:01.09-05:00","firstPublishTime":null,"visits":0,"rating":0.0,"submissions":null,"neosDBmanifest":[{"hash":"69cc58feace1ac8f2a34e79bfa3cc6ead2448db3a55d37f1d2b3deb6465d67ea","bytes":7154}]}
+10:43:53 PM.809 (  0 FPS)	Conflicting cloud record version! Local: 495, Global: 497
+10:43:54 PM.675 (  2 FPS)	Opening World: neosdb:///d0b4e0dcfaf9ce676d249323ff2b39e8503d0a581cd233a5fcb3aebf5216c757.7zbson
+
+   at void BaseX.UniLog.Log(string message, bool stackTrace)
+   at async Task<World> FrooxEngine.Userspace.OpenWorld(WorldStartSettings startInfo)
+   at void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<FrooxEngine.World>.Start<<OpenWorld>d__173>(ref <OpenWorld>d__173 stateMachine)
+   at Task<World> FrooxEngine.Userspace.OpenWorld(WorldStartSettings startInfo)
+   at async Task FrooxEngine.Userspace.OpenHomeOrCreateTask(string ownerId, string ownerName, WorldOrb sourceOrb)
+   at void System.Runtime.CompilerServices.AsyncMethodBuilderCore+MoveNextRunner.InvokeMoveNext(object stateMachine)
+   at void System.Runtime.CompilerServices.AsyncMethodBuilderCore+MoveNextRunner.Run()
+   at void FrooxEngine.ToWorld.OnCompleted(Action continuation)+(object u) => { }
+   at int FrooxEngine.CoroutineManager.ExecuteWorldQueue(double deltaTime)
+   at bool FrooxEngine.World.RefreshStep()
+   at bool FrooxEngine.World.Refresh()
+   at void FrooxEngine.WorldManager.UpdateStep(double maxMilliseconds)
+   at bool FrooxEngine.WorldManager.RunUpdateLoop(double maxMilliseconds)
+   at void FrooxEngine.Engine.UpdateStep(double maxMilliseconds)
+   at void FrooxEngine.Engine.RunUpdateLoop(double maxMilliseconds)
+   at void FrooxEngineRunner.Update()
+10:43:54 PM.688 (  2 FPS)	Requesting gather for: neosdb:///d0b4e0dcfaf9ce676d249323ff2b39e8503d0a581cd233a5fcb3aebf5216c757.7zbson
+10:43:54 PM.690 (  2 FPS)	Got asset at path: C:/Users/bombitmanbomb/AppData/Local/Temp/Solirax/NeosVR\Cache\9iifdxtf14ynjmc3, loading world
+10:43:55 PM.415 (  7 FPS)	NetworkInitStart
+10:43:55 PM.416 (  7 FPS)	Creating Listener for host SteamID 76561198084108249, channel: 1, sessionId: 9820e1bc-7a88-4c7b-abe9-8c26041ce0a6
+10:43:55 PM.418 (  7 FPS)	Starting running world: 
+10:43:55 PM.482 (  7 FPS)	Starting sync for U-bombitmanbomb:R-Settings. Local: 497, Global: 495
+10:43:55 PM.549 (  7 FPS)	Conflict! Cloud Record: {"id":"R-Settings","ownerId":"U-bombitmanbomb","assetUri":"neosdb:///4f824571427c9f61fcec0836de36690b5dfb7d565ef81f1ce5031acdeae46283.7zbson","globalVersion":497,"localVersion":498,"lastModifyingUserId":"U-bombitmanbomb","lastModifyingMachineId":"-lonreqi8k-b-ukvim_fhq","name":"Settings","recordType":"object","ownerName":"bombitmanbomb","tags":["settings"],"path":null,"isPublic":false,"isForPatrons":false,"isListed":false,"lastModificationTime":"2020-03-31T19:39:46.044433Z","creationTime":"2019-02-06T22:15:01.09-05:00","firstPublishTime":null,"visits":0,"rating":0.0,"submissions":null,"neosDBmanifest":[{"hash":"4f824571427c9f61fcec0836de36690b5dfb7d565ef81f1ce5031acdeae46283","bytes":7128}]}
+
+Local record: {"id":"R-Settings","ownerId":"U-bombitmanbomb","assetUri":"local://cxwphbzdjeal8wj7hzq_ca/xwoCi7qw40-QmYYaGudZsA.lz4bson","globalVersion":495,"localVersion":497,"lastModifyingUserId":"U-bombitmanbomb","lastModifyingMachineId":"cxwphbzdjeal8wj7hzq_ca","name":"Settings","recordType":"object","ownerName":"bombitmanbomb","tags":["settings"],"path":null,"isPublic":false,"isForPatrons":false,"isListed":false,"lastModificationTime":"2020-03-24T17:57:16.528-04:00","creationTime":"2019-02-06T22:15:01.09-05:00","firstPublishTime":null,"visits":0,"rating":0.0,"submissions":null,"neosDBmanifest":[{"hash":"69cc58feace1ac8f2a34e79bfa3cc6ead2448db3a55d37f1d2b3deb6465d67ea","bytes":7154}]}
+10:43:55 PM.549 (  7 FPS)	Forcing synchronization
+10:43:55 PM.665 (  7 FPS)	GatherJob for local://cxwphbzdjeal8wj7hzq_ca/xwoCi7qw40-QmYYaGudZsA.lz4bson FAILED! Reason: Asset owner is host!
+10:43:55 PM.682 (  7 FPS)	Failed sync for U-bombitmanbomb:R-Settings. Local: 497, Global: 497:
+Could not locate main asset: local://cxwphbzdjeal8wj7hzq_ca/xwoCi7qw40-QmYYaGudZsA.lz4bson
+
+   at void BaseX.UniLog.Error(string message, bool stackTrace)
+   at void FrooxEngine.RecordUploadTask.Fail(string error)
+   at async Task FrooxEngine.RecordUploadTask.RunUploadInternal(CancellationToken cancelationToken)
+   at void System.Runtime.CompilerServices.AsyncMethodBuilderCore+MoveNextRunner.InvokeMoveNext(object stateMachine)
+   at void System.Runtime.CompilerServices.AsyncMethodBuilderCore+MoveNextRunner.Run()
+   at void System.Threading.Tasks.AwaitTaskContinuation.RunOrScheduleAction(Action action, bool allowInlining, ref Task currentTask)
+   at void System.Threading.Tasks.Task.FinishContinuations()
+   at void System.Threading.Tasks.Task.FinishStageThree()
+   at bool System.Threading.Tasks.Task<string>.TrySetResult(string result)
+   at void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<string>.SetResult(string result)
+   at void System.Runtime.CompilerServices.AsyncValueTaskMethodBuilder<string>.SetResult(string result)
+   at async ValueTask<string> FrooxEngine.AssetGatherer.Gather(Uri url, Priority priority)
+   at void System.Runtime.CompilerServices.AsyncMethodBuilderCore+MoveNextRunner.InvokeMoveNext(object stateMachine)
+   at void System.Runtime.CompilerServices.AsyncMethodBuilderCore+MoveNextRunner.Run()
+   at void System.Threading.Tasks.AwaitTaskContinuation.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at bool System.Threading.ThreadPoolWorkQueue.Dispatch()
+   at bool System.Threading._ThreadPoolWaitCallback.PerformWaitCallback()
+10:43:56 PM.311 (  7 FPS)	Missing method PackPressed (FrooxEngine.ButtonEventHandler on Element: ID218200, Type: FrooxEngine.LogiX.LogixInterfaceProxy, World: Home, IsRemoved: False, IsDestroyed: False, Enabled: True
+Element: ID214900, Type: FrooxEngine.Slot, World: Home, IsRemoved: False, Slot name: Points, T: [-0.4226127; 0.1634657; 1.00816], R: [-0.4547468; -0.2417773; 0.6198046; 0.5921077], S: [0; 0; 0], ActiveSelf: True, IsDestroyed: False
+Element: ID1E00, Type: FrooxEngine.Slot, World: Home, IsRemoved: False, Slot name: Root, T: [0; 0; 0], R: [0; 0; 0; 1], S: [1; 1; 1], ActiveSelf: True, IsDestroyed: False
+Element: ID0, Type: FrooxEngine.World, World: Home, IsRemoved: False
+
+10:43:57 PM.269 (  7 FPS)	Missing method ResetPosition (FrooxEngine.ButtonEventHandler on Element: ID6F9900, Type: FrooxEngine.UnresolvedReferences+UnresolvedReference, World: Home, IsRemoved: False, Name: [28]
+Element: ID6F6000, Type: FrooxEngine.SyncList`1[FrooxEngine.UnresolvedReferences+UnresolvedReference], World: Home, IsRemoved: False, Name: References, Disposed: False
+Element: ID6F5C00, Type: FrooxEngine.UnresolvedReferences, World: Home, IsRemoved: False, IsDestroyed: False, Enabled: True
+Element: ID1E00, Type: FrooxEngine.Slot, World: Home, IsRemoved: False, Slot name: Root, T: [0; 0; 0], R: [0; 0; 0; 1], S: [1; 1; 1], ActiveSelf: True, IsDestroyed: False
+Element: ID0, Type: FrooxEngine.World, World: Home, IsRemoved: False
+
+10:43:57 PM.269 (  7 FPS)	Missing method ResetRotation (FrooxEngine.ButtonEventHandler on Element: ID6F9900, Type: FrooxEngine.UnresolvedReferences+UnresolvedReference, World: Home, IsRemoved: False, Name: [28]
+Element: ID6F6000, Type: FrooxEngine.SyncList`1[FrooxEngine.UnresolvedReferences+UnresolvedReference], World: Home, IsRemoved: False, Name: References, Disposed: False
+Element: ID6F5C00, Type: FrooxEngine.UnresolvedReferences, World: Home, IsRemoved: False, IsDestroyed: False, Enabled: True
+Element: ID1E00, Type: FrooxEngine.Slot, World: Home, IsRemoved: False, Slot name: Root, T: [0; 0; 0], R: [0; 0; 0; 1], S: [1; 1; 1], ActiveSelf: True, IsDestroyed: False
+Element: ID0, Type: FrooxEngine.World, World: Home, IsRemoved: False
+
+10:43:57 PM.269 (  7 FPS)	Missing method ResetScale (FrooxEngine.ButtonEventHandler on Element: ID6F9900, Type: FrooxEngine.UnresolvedReferences+UnresolvedReference, World: Home, IsRemoved: False, Name: [28]
+Element: ID6F6000, Type: FrooxEngine.SyncList`1[FrooxEngine.UnresolvedReferences+UnresolvedReference], World: Home, IsRemoved: False, Name: References, Disposed: False
+Element: ID6F5C00, Type: FrooxEngine.UnresolvedReferences, World: Home, IsRemoved: False, IsDestroyed: False, Enabled: True
+Element: ID1E00, Type: FrooxEngine.Slot, World: Home, IsRemoved: False, Slot name: Root, T: [0; 0; 0], R: [0; 0; 0; 1], S: [1; 1; 1], ActiveSelf: True, IsDestroyed: False
+Element: ID0, Type: FrooxEngine.World, World: Home, IsRemoved: False
+
+10:43:57 PM.269 (  7 FPS)	Missing method OnCreatePivotAtCenter (FrooxEngine.ButtonEventHandler on Element: ID6F9900, Type: FrooxEngine.UnresolvedReferences+UnresolvedReference, World: Home, IsRemoved: False, Name: [28]
+Element: ID6F6000, Type: FrooxEngine.SyncList`1[FrooxEngine.UnresolvedReferences+UnresolvedReference], World: Home, IsRemoved: False, Name: References, Disposed: False
+Element: ID6F5C00, Type: FrooxEngine.UnresolvedReferences, World: Home, IsRemoved: False, IsDestroyed: False, Enabled: True
+Element: ID1E00, Type: FrooxEngine.Slot, World: Home, IsRemoved: False, Slot name: Root, T: [0; 0; 0], R: [0; 0; 0; 1], S: [1; 1; 1], ActiveSelf: True, IsDestroyed: False
+Element: ID0, Type: FrooxEngine.World, World: Home, IsRemoved: False
+
+10:43:57 PM.269 (  7 FPS)	Missing method JumpTo (FrooxEngine.ButtonEventHandler on Element: ID6F9900, Type: FrooxEngine.UnresolvedReferences+UnresolvedReference, World: Home, IsRemoved: False, Name: [28]
+Element: ID6F6000, Type: FrooxEngine.SyncList`1[FrooxEngine.UnresolvedReferences+UnresolvedReference], World: Home, IsRemoved: False, Name: References, Disposed: False
+Element: ID6F5C00, Type: FrooxEngine.UnresolvedReferences, World: Home, IsRemoved: False, IsDestroyed: False, Enabled: True
+Element: ID1E00, Type: FrooxEngine.Slot, World: Home, IsRemoved: False, Slot name: Root, T: [0; 0; 0], R: [0; 0; 0; 1], S: [1; 1; 1], ActiveSelf: True, IsDestroyed: False
+Element: ID0, Type: FrooxEngine.World, World: Home, IsRemoved: False
+
+10:43:57 PM.269 (  7 FPS)	Missing method ParentUnderWorldRoot (FrooxEngine.ButtonEventHandler on Element: ID6F9900, Type: FrooxEngine.UnresolvedReferences+UnresolvedReference, World: Home, IsRemoved: False, Name: [28]
+Element: ID6F6000, Type: FrooxEngine.SyncList`1[FrooxEngine.UnresolvedReferences+UnresolvedReference], World: Home, IsRemoved: False, Name: References, Disposed: False
+Element: ID6F5C00, Type: FrooxEngine.UnresolvedReferences, World: Home, IsRemoved: False, IsDestroyed: False, Enabled: True
+Element: ID1E00, Type: FrooxEngine.Slot, World: Home, IsRemoved: False, Slot name: Root, T: [0; 0; 0], R: [0; 0; 0; 1], S: [1; 1; 1], ActiveSelf: True, IsDestroyed: False
+Element: ID0, Type: FrooxEngine.World, World: Home, IsRemoved: False
+
+10:43:57 PM.270 (  7 FPS)	Unresolved count: 39, Processed in: 00:00:00.0048616
+10:43:57 PM.270 (  7 FPS)	World Home Loaded in: 00:00:01.8452887
+10:43:57 PM.283 (  7 FPS)	Spawning User bombitmanbomb (ID2900)
+10:43:57 PM.283 (  7 FPS)	User bombitmanbomb Role: Admin, HasFingerTracking: False, HasEyeTracking: False, HasLipTracking: False
+10:44:03 PM.840 (123 FPS)	Exiting Neos. Save Homes: False
+10:44:03 PM.922 (123 FPS)	Conflict. Old Record:
+
+{"id":"R-Settings","ownerId":"U-bombitmanbomb","assetUri":"local://cxwphbzdjeal8wj7hzq_ca/xwoCi7qw40-QmYYaGudZsA.lz4bson","globalVersion":495,"localVersion":497,"lastModifyingUserId":"U-bombitmanbomb","lastModifyingMachineId":"cxwphbzdjeal8wj7hzq_ca","name":"Settings","recordType":"object","ownerName":"bombitmanbomb","tags":["settings"],"path":null,"isPublic":false,"isForPatrons":false,"isListed":false,"lastModificationTime":"2020-03-24T17:57:16.528-04:00","creationTime":"2019-02-06T22:15:01.09-05:00","firstPublishTime":null,"visits":0,"rating":0.0,"submissions":null,"neosDBmanifest":[{"hash":"69cc58feace1ac8f2a34e79bfa3cc6ead2448db3a55d37f1d2b3deb6465d67ea","bytes":7154}]}
+
+New Record:
+
+{"id":"R-Settings","ownerId":"U-bombitmanbomb","assetUri":"local://cxwphbzdjeal8wj7hzq_ca/FnNlzkM4ukGD-BY_R1BIVg.lz4bson","globalVersion":0,"localVersion":1,"lastModifyingUserId":"U-bombitmanbomb","lastModifyingMachineId":"cxwphbzdjeal8wj7hzq_ca","name":"Settings","recordType":"object","ownerName":null,"path":null,"isPublic":false,"isForPatrons":false,"isListed":false,"lastModificationTime":"2020-05-05T02:44:03.8946094Z","creationTime":"2020-05-05T02:44:03.8946094Z","firstPublishTime":null,"visits":0,"rating":0.0,"submissions":null}
+10:44:03 PM.925 (123 FPS)	Starting running world: 
+10:44:03 PM.976 (123 FPS)	Spawning User bombitmanbomb (ID2900)
+10:44:03 PM.977 (123 FPS)	User bombitmanbomb Role: Admin, HasFingerTracking: False, HasEyeTracking: False, HasLipTracking: False
+10:44:04 PM.098 (100 FPS)	Shutdown requested
+10:44:04 PM.098 (100 FPS)	Shutting down
+10:44:04 PM.183 (100 FPS)	Requesting environment shutdown
+10:44:04 PM.189 (100 FPS)	Shutting down environment
+10:44:04 PM.425 (100 FPS)	Saving Settings
