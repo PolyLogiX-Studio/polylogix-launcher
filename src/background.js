@@ -1,7 +1,8 @@
 'use strict'
 import child_process from 'child_process'
-import { app, protocol, BrowserWindow, ipcMain, Menu, Tray } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import path from 'path'
+console.log(process.platform)
 import {
   createProtocol,
   /* installVueDevtools */
@@ -13,7 +14,7 @@ let win
 import fetch from 'node-fetch'
 import Store from 'electron-store'
 import fs from 'fs'
-const store = new Store({fileExtension:"", name:"dat", migrations:require("./db_migrations")});
+const store = new Store({ fileExtension: "", name: "dat", migrations: require("./db_migrations") });
 import VDF from './vdfParser'
 var neosDir = store.get("NeosDir")
 if (!neosDir) {
@@ -25,23 +26,25 @@ if (!neosDir) {
 
 }
 function checkNeosDir() {
-  if (fs.existsSync("C:/Program Files (x86)/Steam/steamapps/libraryfolders.vdf")) {
-    const steamfolders = VDF.parse(fs.readFileSync("C:/Program Files (x86)/Steam/steamapps/libraryfolders.vdf").toString())
-    var neosdir = null
-    for (var [key, value] of Object.entries(steamfolders.LibraryFolders)) {
-      if (parseInt(key)) {
-        if (fs.existsSync(`${value}\\steamapps\\common\\NeosVR`)) {
-          neosdir = `${value}\\steamapps\\common\\NeosVR`
-          break
+  if (process.platform == "win32") {
+    if (fs.existsSync("C:/Program Files (x86)/Steam/steamapps/libraryfolders.vdf")) {
+      const steamfolders = VDF.parse(fs.readFileSync("C:/Program Files (x86)/Steam/steamapps/libraryfolders.vdf").toString())
+      var neosdir = null
+      for (var [key, value] of Object.entries(steamfolders.LibraryFolders)) {
+        if (parseInt(key)) {
+          if (fs.existsSync(`${value}\\steamapps\\common\\NeosVR`)) {
+            neosdir = `${value}\\steamapps\\common\\NeosVR`
+            break
+          }
         }
       }
-    }
-    if (!neosdir) {
-      console.log("Neos Not Found")
-    } else {
-      console.log("Found Neos at " + neosdir)
-      neosDir = neosdir
-      store.set("NeosDir", neosdir);
+      if (!neosdir) {
+        console.log("Neos Not Found")
+      } else {
+        console.log("Found Neos at " + neosdir)
+        neosDir = neosdir
+        store.set("NeosDir", neosdir);
+      }
     }
   }
 
@@ -117,7 +120,7 @@ if (isDevelopment) {
   }
 }
 function createListeners(win) {
-  ipcMain.on("LAUNCH-NEOS", ()=>{
+  ipcMain.on("LAUNCH-NEOS", () => {
     LaunchNeos()
   })
   ipcMain.on("windowCommand", (e, cmd) => {
@@ -152,14 +155,19 @@ function createListeners(win) {
         }
       })
   })
-var Neos = null
-function LaunchNeos(){
-  Neos = child_process.spawn(path.join(store.get("NeosDir"),"Neos.exe"),[],{detached:true})
-  win.minimize()
-  Neos.on('close', ()=>{
-    win.maximize()
-  })
-}
+  var Neos = null
+  function LaunchNeos() {
+    if (process.platform == "win32") {
+      Neos = child_process.spawn(path.join(store.get("NeosDir"), "Neos.exe"), [], { detached: true })
+    }
+    else {
+      Neos = child_process.spawn("mono", [path.join(store.get("NeosDir"), "Neos.exe")], { detached: true })
+    }
+    win.minimize()
+    Neos.on('close', () => {
+      win.maximize()
+    })
+  }
 
 
   win.webContents.on("new-window", function (event, url) {
@@ -177,12 +185,3 @@ function LaunchNeos(){
     }, 5000)
   })
 }
-var contextMenu = Menu.buildFromTemplate([
-  { label: 'Show App', click:  function(){
-      win.show();
-  } },
-  { label: 'Quit', click:  function(){
-      app.isQuiting = true;
-      app.quit();
-  } }
-]);

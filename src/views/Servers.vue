@@ -30,32 +30,32 @@
               </v-tooltip>
               <v-tooltip top open-delay="500">
                 <template v-slot:activator="{ on }">
-                  <v-icon v-on="on" v-if="item.plugins" :color="item.pluginMatchStatus">mdi-toy-brick-plus</v-icon>
+                  <v-icon
+                    v-on="on"
+                    v-if="item.plugins"
+                    :color="item.pluginMatchStatus"
+                  >mdi-toy-brick-plus</v-icon>
                 </template>
                 <span>Plugins Enabled</span>
               </v-tooltip>
               <v-tooltip top open-delay="500">
                 <template v-slot:activator="{ on }">
                   <v-icon
-                  v-on="on"
-                v-if="item.warning&&!item.headlessHost"
-                :color="item.warningSeverity"
-              >mdi-account-arrow-right-outline</v-icon>
+                    v-on="on"
+                    v-if="item.warning&&!item.headlessHost"
+                    :color="item.warningSeverity"
+                  >mdi-account-arrow-right-outline</v-icon>
                 </template>
                 <span>{{item.hostUsername}} went Elsewhere {{timeSince(new Date(item.awaySince))}} ago</span>
               </v-tooltip>
-              
-              
-              
-              
-              <span>{{item.name}} </span>
+
+              <span>{{item.name}}</span>
               <v-tooltip top open-delay="500">
                 <template v-slot:activator="{ on }">
                   <v-icon v-on="on" color="success" v-if="item.verified">mdi-check-decagram</v-icon>
                 </template>
                 <span>Official Server</span>
               </v-tooltip>
-              
             </h3>
             <p class="host">{{item.hostUsername}}</p>
             <p class="version">{{item.neosVersion}}</p>
@@ -147,33 +147,33 @@ export default {
       interval: null
     };
   },
-  methods:{
+  methods: {
     timeSince: function timeSince(date) {
-  var seconds = Math.floor((new Date() - date) / 1000);
+      var seconds = Math.floor((new Date() - date) / 1000);
 
-  var interval = Math.floor(seconds / 31536000);
+      var interval = Math.floor(seconds / 31536000);
 
-  if (interval > 1) {
-    return interval + " years";
-  }
-  interval = Math.floor(seconds / 2592000);
-  if (interval > 1) {
-    return interval + " months";
-  }
-  interval = Math.floor(seconds / 86400);
-  if (interval > 1) {
-    return interval + " days";
-  }
-  interval = Math.floor(seconds / 3600);
-  if (interval > 1) {
-    return interval + " hours";
-  }
-  interval = Math.floor(seconds / 60);
-  if (interval > 1) {
-    return interval + " minutes";
-  }
-  return Math.floor(seconds) + " seconds";
-}
+      if (interval > 1) {
+        return interval + " years";
+      }
+      interval = Math.floor(seconds / 2592000);
+      if (interval > 1) {
+        return interval + " months";
+      }
+      interval = Math.floor(seconds / 86400);
+      if (interval > 1) {
+        return interval + " days";
+      }
+      interval = Math.floor(seconds / 3600);
+      if (interval > 1) {
+        return interval + " hours";
+      }
+      interval = Math.floor(seconds / 60);
+      if (interval > 1) {
+        return interval + " minutes";
+      }
+      return Math.floor(seconds) + " seconds";
+    }
   },
   // Fetches posts when the component is created.
   created() {
@@ -193,10 +193,10 @@ export default {
         });
         filteredData.forEach(element => {
           element.headlessCORE = false;
-          if (element.hostUserId=="U-bombitmanbomb"){
-            element.headlessCORE = true
-            element.pluginMatchStatus = "success"
-            element.plugins=true
+          if (element.hostUserId == "U-bombitmanbomb") {
+            element.headlessCORE = true;
+            element.pluginMatchStatus = "success";
+            element.plugins = true;
           }
           if (element.awaySince) {
             element.warning = "Away";
