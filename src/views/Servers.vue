@@ -59,7 +59,7 @@
             </h3>
             <p class="host">{{item.hostUsername}}</p>
             <p class="version">{{item.neosVersion}}</p>
-            {{item.sessionUsers.length}}/{{item.maxUsers}}
+            {{item.headlessHost?item.sessionUsers.length - 1+'/'+String(parseInt(item.maxUsers) - 1):item.sessionUsers.length+'/'+item.maxUsers}}
           </v-expansion-panel-header>
           <v-expansion-panel-content>
             <v-img :src="item.thumbnail"></v-img>
