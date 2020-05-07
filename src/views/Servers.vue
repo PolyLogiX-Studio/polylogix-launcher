@@ -10,7 +10,7 @@
       <v-skeleton-loader v-if="loading" height="94" type="table-heading"></v-skeleton-loader>
       <v-expansion-panels>
         <v-expansion-panel v-for="item in posts" :key="item.sessionId">
-          <v-expansion-panel-header class="header">
+          <v-expansion-panel-header class="header" :color="item.verified?'':''">
             <h3>
               <v-tooltip top open-delay="500">
                 <template v-slot:activator="{ on }">
