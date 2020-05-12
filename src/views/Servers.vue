@@ -1,12 +1,16 @@
 <template>
   <div class="scrollable">
     <v-container>
-      <v-card minHeight="5em">Displaying {{posts.length}}/{{dataRaw.length}} Servers.</v-card>
+      <!--Filtering-->
+      <v-card
+        minHeight="5em"
+      >Displaying {{posts.length}}/{{dataRaw.length}} Servers across {{versions.length}} Neos build{{versions.length>1?'s':''}}.</v-card>
       <v-card minHeight="2em">
         <div class="host">HOST</div>
         <div class="version">VERSION</div>
         <div class="playercount">Users</div>
       </v-card>
+      <!--Data-->
       <v-skeleton-loader v-if="loading" height="94" type="table-heading"></v-skeleton-loader>
       <v-expansion-panels>
         <v-expansion-panel v-for="item in posts" :key="item.sessionId">
@@ -21,6 +25,12 @@
                   >mdi-server</v-icon>
                 </template>
                 <span>{{item.headlessCORE?'PolyLogiX':''}} Headless Client</span>
+              </v-tooltip>
+              <v-tooltip top open-delay="500">
+                <template v-slot:activator="{ on }">
+                  <v-icon v-if="item.steamProtocol" v-on="on">mdi-steam</v-icon>
+                </template>
+                <span>Steam Protocol Enabled</span>
               </v-tooltip>
               <v-tooltip top open-delay="500">
                 <template v-slot:activator="{ on }">
@@ -62,13 +72,42 @@
             {{item.headlessHost?item.sessionUsers.length - 1+'/'+String(parseInt(item.maxUsers) - 1):item.sessionUsers.length+'/'+item.maxUsers}}
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-            <v-img :src="item.thumbnail"></v-img>
+            <v-img
+              :src="item.thumbnail?item.thumbnail:'https://via.placeholder.com/1024x512.webp?text=Image+Rendering...'"
+              class="serverThumbnail"
+            ></v-img>
+
+            <v-container class="userList">
+              <v-row class="userListItem" no-gutters :key="n.userId" v-for="n of item.sessionUsers">
+                <v-card class="pa-2 userListItem" outlined tile>
+                  <v-tooltip top open-delay="500">
+                    <template v-slot:activator="{ on }">
+                      <v-icon v-on="on" v-if="n.userID==item.hostUserId" color="yellow">mdi-crown</v-icon>
+                    </template>
+                    <span>Host</span>
+                  </v-tooltip>
+                  <v-tooltip top open-delay="500">
+                    <template v-slot:activator="{ on }">
+                      <v-icon
+                        v-if="item.headlessHost&&n.userID==item.hostUserId"
+                        v-on="on"
+                        :color="item.headlessCORE?'primary':''"
+                      >mdi-server</v-icon>
+                    </template>
+                    <span>{{item.headlessCORE?'PolyLogiX':''}} Headless Client</span>
+                  </v-tooltip>
+                  {{n.username}}
+                </v-card>
+              </v-row>
+            </v-container>
+            <div class="serverDetails">{{item.description}}</div>
             <div class="joinButton">
               <v-btn
+                :disabled="item.serverFull"
                 color="primary"
                 target="_blank"
                 :href="'neos:?world=neos-session://' + item.sessionId"
-              >Join Server</v-btn>
+              >{{item.serverFull?'Server Full':'Join Server'}}</v-btn>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -77,10 +116,51 @@
   </div>
 </template>
 <style>
+.serverDetails {
+  width: 30em;
+  float: left;
+  min-height: 5em;
+}
+.serverThumbnail {
+  width: 40em;
+  float: left;
+}
 .userList {
-  position: absolute;
-  right: 510px;
-  top: 0;
+  float: right;
+  right: 0;
+  width: 20em;
+  max-height: 18em;
+  min-height: 18em;
+  height: 18em;
+  padding-bottom: 15px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.userList::-webkit-scrollbar {
+  overflow-y: scroll;
+  display: block;
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+.userList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  height: 5px;
+}
+
+/* Handle */
+.userList::-webkit-scrollbar-thumb {
+  background: #2196f3;
+}
+
+/* Handle on hover */
+.userList::-webkit-scrollbar-thumb:hover {
+  background: #673ab7;
+}
+
+.userListItem {
+  width: 19em;
 }
 .playercount {
   right: 40px;
@@ -95,8 +175,9 @@
   right: 250px;
 }
 .joinButton {
-  bottom: 0px;
-  left: 0px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 .header {
   top: 0;
@@ -136,7 +217,6 @@
 </style>
 <script>
 import electron from "electron";
-
 export default {
   data() {
     return {
@@ -144,7 +224,11 @@ export default {
       posts: [],
       errors: [],
       loading: true,
-      interval: null
+      interval: null,
+      versions: [],
+      tags: [],
+      filter: {},
+      sort: {}
     };
   },
   methods: {
@@ -173,44 +257,57 @@ export default {
         return interval + " minutes";
       }
       return Math.floor(seconds) + " seconds";
+    },
+    createData: function createData(event, servers, intervalStore = []) {
+      this.loading = false;
+      this.dataRaw = servers;
+      var filteredData = this.dataRaw.filter(server => {
+        return (false||
+        //Hide Empty
+        (
+          server.sessionUsers.length > 1 ||
+          (server.sessionUsers.length == 1 &&
+            !server.headlessHost &&
+            server.activeUsers > -1)
+        )
+        );
+      });
+      filteredData.forEach(element => {
+        element.headlessCORE = false;
+        element.serverFull = element.sessionUsers.length >= element.maxUsers;
+        if (element.hostUserId == "U-bombitmanbomb") {
+          element.headlessCORE = true;
+          element.pluginMatchStatus = "success";
+          element.plugins = true;
+        }
+        element.steamProtocol = element.sessionURLs.some(i => {
+          return i.startsWith("neos-steam");
+        });
+        if (element.awaySince) {
+          element.warning = "Away";
+        }
+        if (element.hostUserId == "U-FrooxLess") element.verified = true;
+        if (!this.versions.includes(element.neosVersion)) {
+          this.versions.push(element.neosVersion);
+        }
+      });
+      this.posts = filteredData.reverse();
+      console.log(intervalStore);
+
+      if (intervalStore.length > 1) {
+        for (let item of intervalStore) {
+          if (item != this.interval) clearInterval(item);
+        }
+      }
     }
   },
+
   // Fetches posts when the component is created.
   created() {
     electron.ipcRenderer.on(
       "server-list-update-async",
-      (event, servers, intervalStore) => {
-        this.loading = false;
-        this.dataRaw = servers;
-        let filteredData = this.dataRaw.filter(server => {
-          return (
-            true ||
-            server.sessionUsers.length > 1 ||
-            (server.sessionUsers.length == 1 &&
-              !server.headlessHost &&
-              server.activeUsers > 0)
-          );
-        });
-        filteredData.forEach(element => {
-          element.headlessCORE = false;
-          if (element.hostUserId == "U-bombitmanbomb") {
-            element.headlessCORE = true;
-            element.pluginMatchStatus = "success";
-            element.plugins = true;
-          }
-          if (element.awaySince) {
-            element.warning = "Away";
-          }
-          if (element.hostUserId == "U-FrooxLess") element.verified = true;
-        });
-        this.posts = filteredData.reverse();
-        console.log(intervalStore);
-
-        if (intervalStore.length > 1) {
-          for (let item of intervalStore) {
-            if (item != this.interval) clearInterval(item);
-          }
-        }
+      (event, servers, internalStore) => {
+        this.createData(event, servers, internalStore);
       }
     );
     electron.ipcRenderer.send("fetch-server-list-async");

@@ -21,7 +21,6 @@
 <script>
 export default {
   name: "ProjectsSideBar",
-
   data() {
     return {
       items: [

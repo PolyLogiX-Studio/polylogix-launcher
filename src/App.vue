@@ -13,9 +13,10 @@
       </div> 
       <div class="app-bar-content-nograb">
         <v-tabs background-color="primary">
-          <v-btn color="warning" height="100%" :disabled="$store.launchable==false" @click="launch"><v-icon>mdi-play</v-icon> Launch Neos</v-btn>
+          <v-btn color="warning" height="100%" :disabled="$store.launchable==false" @click="launch"><v-icon>mdi-play</v-icon> {{$store.launchable?'Launch Neos':$store.running?'Neos Running':'Launch Neos'}}</v-btn>
           <v-tab to="/"><v-icon>mdi-code-braces</v-icon>Projects</v-tab>
           <v-tab to="/Servers"><v-icon>mdi-server</v-icon>Server Browser</v-tab>
+          <v-tab to="/Worlds"><v-icon>mdi-earth</v-icon>Worlds</v-tab>
           <v-tab to="/Thing"><v-icon>mdi-toy-brick-plus</v-icon>Plugins</v-tab>
           <v-tab to="/Account"><v-icon>mdi-account</v-icon>My Account</v-tab>
           <v-tab to="/Neos"><v-icon>mdi-microsoft-azure</v-icon>Neos</v-tab>
@@ -60,8 +61,6 @@
 <script>
 import electron from 'electron'
 
-
-
 export default {
   name: "app",
   data(){
@@ -69,6 +68,8 @@ export default {
     }
   },
   components : {},
+  computed:{
+  },
   methods:{
     "minimize":function(){
       electron.ipcRenderer.send("windowCommand","minimize")

@@ -1,0 +1,107 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm": {
+    "isCaseSensitive": false,
+    "store": "D:\\.pnpm-store\\2"
+  },
+  "2 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "polylogix-launcher",
+      "version": "0.1.0",
+      "homepage": "https://www.polylogix.studio",
+      "private": true,
+      "description": "Launcher for PolyLogiX",
+      "author": "Ethan Snow <polylogixstudio@gmail.com>",
+      "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "electron:build": "vue-cli-service electron:build",
+        "electron:serve": "vue-cli-service electron:serve",
+        "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
+        "postinstall": "electron-builder install-app-deps",
+        "postuninstall": "electron-builder install-app-deps"
+      },
+      "main": "background.js",
+      "dependencies": {
+        "axios": "^0.19.2",
+        "core-js": "^3.6.4",
+        "electron-store": "^5.1.1",
+        "node-fetch": "^2.6.0",
+        "photo-sphere-viewer": "^4.0.2",
+        "rimraf": "^3.0.2",
+        "vue": "^2.6.11",
+        "vue-i18n": "^8.17.3",
+        "vue-router": "^3.1.6",
+        "vue-video-player": "^5.0.2",
+        "vuejs-panorama": "^1.1.9",
+        "vuejs-vr": "^1.1.0",
+        "vuetify": "^2.2.11",
+        "vuex": "^3.3.0"
+      },
+      "devDependencies": {
+        "@vue/cli-plugin-babel": "~4.3.0",
+        "@vue/cli-plugin-eslint": "~4.3.0",
+        "@vue/cli-plugin-router": "~4.3.0",
+        "@vue/cli-plugin-vuex": "~4.3.0",
+        "@vue/cli-service": "~4.3.0",
+        "babel-eslint": "^10.1.0",
+        "electron": "6.0.0",
+        "eslint": "^6.7.2",
+        "eslint-plugin-vue": "^6.2.2",
+        "sass": "^1.19.0",
+        "sass-loader": "^8.0.0",
+        "vue-cli-plugin-electron-builder": "^1.4.6",
+        "vue-cli-plugin-vuetify": "^2.0.5",
+        "vue-template-compiler": "^2.6.11",
+        "vuetify-loader": "^1.3.0"
+      },
+      "eslintConfig": {
+        "root": true,
+        "env": {
+          "node": true
+        },
+        "extends": [
+          "plugin:vue/essential",
+          "eslint:recommended"
+        ],
+        "parserOptions": {
+          "parser": "babel-eslint"
+        },
+        "rules": {}
+      },
+      "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+      ],
+      "productName": "PolyLogiX Launcher"
+    },
+    "prefix": "D:\\Documents\\GitHub\\PolyLogiX-Launcher\\polylogix-launcher"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "D:\\Documents\\GitHub\\PolyLogiX-Launcher\\polylogix-launcher",
+    "stage": "resolution_started"
+  },
+  "4 warn pnpm": {
+    "message": "Moving axios that was installed by a different package manager to \"node_modules/.ignored",
+    "prefix": "D:\\Documents\\GitHub\\PolyLogiX-Launcher\\polylogix-launcher"
+  },
+  "5 error pnpm": {
+    "message": {
+      "errno": -4048,
+      "code": "EPERM",
+      "syscall": "rename",
+      "path": "D:\\Documents\\GitHub\\PolyLogiX-Launcher\\polylogix-launcher\\node_modules\\axios",
+      "dest": "D:\\Documents\\GitHub\\PolyLogiX-Launcher\\polylogix-launcher\\node_modules\\.ignored\\axios"
+    },
+    "err": {
+      "name": "Error",
+      "message": "EPERM: operation not permitted, rename 'D:\\Documents\\GitHub\\PolyLogiX-Launcher\\polylogix-launcher\\node_modules\\axios' -> 'D:\\Documents\\GitHub\\PolyLogiX-Launcher\\polylogix-launcher\\node_modules\\.ignored\\axios'",
+      "code": "EPERM",
+      "stack": "Error: EPERM: operation not permitted, rename 'D:\\Documents\\GitHub\\PolyLogiX-Launcher\\polylogix-launcher\\node_modules\\axios' -> 'D:\\Documents\\GitHub\\PolyLogiX-Launcher\\polylogix-launcher\\node_modules\\.ignored\\axios'"
+    }
+  }
+}

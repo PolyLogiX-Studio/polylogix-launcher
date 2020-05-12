@@ -1,7 +1,7 @@
 {
   "name": "polylogix-launcher",
   "version": "0.1.0",
-  "homepage":"https://www.polylogix.studio",
+  "homepage": "https://www.polylogix.studio",
   "private": true,
   "description": "Launcher for PolyLogiX",
   "author": "Ethan Snow <polylogixstudio@gmail.com>",
