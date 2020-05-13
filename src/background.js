@@ -155,6 +155,22 @@ function createListeners(win) {
         }
       })
   })
+  ipcMain.on("fetch-world-list-async", (event, interval, query = {}) => {
+    if (!intervalStore.includes(interval) && interval != null) {
+      intervalStore.push(interval)
+    }
+
+    fetch("https://www.neosvr-api.com/api/records/search", { method: "POST", body:JSON.stringify(query), headers:{'Content-Type':'application/json'}})
+      .then(res => res.json())
+      .then(json => {
+        console.log(json)
+        event.reply("world-list-update-async", json, intervalStore)
+
+        if (intervalStore.length != 1) {
+          intervalStore = [interval]
+        }
+      })
+  })
   var Neos = null
   function LaunchNeos() {
     if (process.platform == "win32") {
