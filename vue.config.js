@@ -6,7 +6,7 @@ module.exports = {
     electronBuilder: {
       builderOptions: {
         "win": {
-          appId: "com.electron.${name}",
+          appId: "com.electron.polylogix-launcher",
           icon: './src/assets/icon.ico',
           "publish": [
             {
