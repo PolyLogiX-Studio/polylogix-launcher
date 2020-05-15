@@ -1,7 +1,7 @@
 {
   "name": "polylogix-launcher",
   "repository": "https://github.com/PolyLogiX-Studio/polylogix-launcher",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "https://www.polylogix.studio",
   "private": true,
   "description": "Launcher for PolyLogiX",
