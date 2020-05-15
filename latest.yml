@@ -1,8 +1,8 @@
-version: 0.1.3
+version: 0.1.4
 files:
-  - url: PolyLogiX-Launcher-Setup-0.1.3.exe
-    sha512: cmHZy5IiEekWXjOD7lZJAjOg8SNdqX6xYuf5stRHViR4rV9VrSY7lIBxXinNpNGAY+s8ebDLXg9oiCzgufercA==
-    size: 45373841
-path: PolyLogiX-Launcher-Setup-0.1.3.exe
-sha512: cmHZy5IiEekWXjOD7lZJAjOg8SNdqX6xYuf5stRHViR4rV9VrSY7lIBxXinNpNGAY+s8ebDLXg9oiCzgufercA==
-releaseDate: '2020-05-15T05:40:36.433Z'
+  - url: PolyLogiX-Launcher-Setup-0.1.4.exe
+    sha512: Yb63p45B5Se6Trc+z66VKl6MwcW6s2BkAL8nL+U5uvNrBkRnM2ueBdramwsewglGqYhkbtfsy09yeg79iQVFmA==
+    size: 45373842
+path: PolyLogiX-Launcher-Setup-0.1.4.exe
+sha512: Yb63p45B5Se6Trc+z66VKl6MwcW6s2BkAL8nL+U5uvNrBkRnM2ueBdramwsewglGqYhkbtfsy09yeg79iQVFmA==
+releaseDate: '2020-05-15T18:32:54.123Z'
