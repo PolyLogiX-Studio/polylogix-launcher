@@ -1,6 +1,36 @@
 'use strict'
 import child_process from 'child_process'
-import { app, protocol, BrowserWindow, ipcMain } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain, autoUpdater, dialog } from 'electron'
+import isDev from 'electron-is-dev'
+
+if (isDev) {
+  console.log('Running in development');
+} else {
+  const server = 'https://polylogix-launcher.now.sh/'
+  const url = `${server}/update/${process.platform}/${app.getVersion()}`
+
+  autoUpdater.setFeedURL({ url })
+  autoUpdater.on('error', message => {
+    console.error('There was a problem updating the application')
+    console.error(message)
+  })
+  autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+    const dialogOpts = {
+      type: 'info',
+      buttons: ['Restart', 'Later'],
+      title: 'Application Update',
+      message: process.platform === 'win32' ? releaseNotes : releaseName,
+      detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+    }
+
+    dialog.showMessageBox(dialogOpts).then((returnValue) => {
+      if (returnValue.response === 0) autoUpdater.quitAndInstall()
+    })
+  })
+
+  //Check for Updates
+  autoUpdater.checkForUpdates()
+}
 import path from 'path'
 console.log(process.platform)
 import {
@@ -160,7 +190,7 @@ function createListeners(win) {
       intervalStore.push(interval)
     }
 
-    fetch("https://www.neosvr-api.com/api/records/search", { method: "POST", body:JSON.stringify(query), headers:{'Content-Type':'application/json'}})
+    fetch("https://www.neosvr-api.com/api/records/search", { method: "POST", body: JSON.stringify(query), headers: { 'Content-Type': 'application/json' } })
       .then(res => res.json())
       .then(json => {
         console.log(json)
