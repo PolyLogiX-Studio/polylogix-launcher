@@ -1,7 +1,7 @@
 'use strict'
 import child_process from 'child_process'
 import { app, protocol, BrowserWindow, ipcMain, dialog } from 'electron'
-import autoUpdater from 'electron-updater'
+import {autoUpdater} from 'electron-updater'
 import isDev from 'electron-is-dev'
 import path from 'path'
 console.log(process.platform)
@@ -103,10 +103,10 @@ app.on('activate', () => {
 // Some APIs can only be used after this event occurs.
 app.on('ready', async () => {
   //Create Listeners
-
+  
   createWindow()
 
-
+// Integrate this into UI
   if (isDev) {
     dialog.showMessageBox({
       title: 'Dev Build!',
@@ -116,16 +116,17 @@ app.on('ready', async () => {
   } else {
     let updater
   autoUpdater.autoDownload = false
-  
+  autoUpdater.fullChangelog = true,
   autoUpdater.on('error', (error) => {
-    dialog.showErrorBox('Error: ', error == null ? "unknown" : (error.stack || error).toString())
+    dialog.showMessageBox({'type':'error','message':JSON.stringify(error.stack)})
+    //dialog.showErrorBox('Error: ', error == null ? "unknown" : (error.stack || error).toString())
   })
   
   autoUpdater.on('update-available', () => {
     dialog.showMessageBox({
       type: 'info',
       title: 'Found Updates',
-      message: 'Found updates, do you want update now?',
+      message: 'Found updates, do you want update now?' ,
       buttons: ['Sure', 'No']
     }, (buttonIndex) => {
       if (buttonIndex === 0) {
@@ -155,9 +156,8 @@ app.on('ready', async () => {
       setImmediate(() => autoUpdater.quitAndInstall())
     })
   })
-  if (fs.existsSync(path.resolve(path.dirname(process.execPath), '..', 'update.exe'))){
     autoUpdater.checkForUpdatesAndNotify()
-  }
+  
   
   }
 
