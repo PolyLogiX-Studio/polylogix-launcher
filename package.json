@@ -1,5 +1,6 @@
 {
   "name": "polylogix-launcher",
+  "repository": "https://github.com/PolyLogiX-Studio/polylogix-launcher",
   "version": "0.1.4",
   "homepage": "https://www.polylogix.studio",
   "private": true,

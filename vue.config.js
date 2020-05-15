@@ -2,16 +2,17 @@ module.exports = {
   "transpileDependencies": [
     "vuetify"
   ],
-  pluginOptions:{
+  pluginOptions: {
     electronBuilder: {
       builderOptions: {
-        win: {
+        "win": {
+          appId: "com.electron.${name}",
           icon: './src/assets/icon.ico',
           "publish": [
             {
               "provider": "github",
               "owner": "PolyLogiX-Studio",
-             "repo": "polylogix-launcher"
+              "repo": "polylogix-launcher"
             }
           ]
         }
