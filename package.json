@@ -1,6 +1,6 @@
 {
   "name": "polylogix-launcher",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://www.polylogix.studio",
   "private": true,
   "description": "Launcher for PolyLogiX",
@@ -71,15 +71,5 @@
     "last 2 versions",
     "not dead"
   ],
-  "productName": "PolyLogiX Launcher",
-  "build": {
-    "publish": [
-      {
-        "provider": "github",
-      }
-    ],
-    "nsis": {
-      "perMachine": true
-    }
-  }
+  "productName": "PolyLogiX Launcher"
 }

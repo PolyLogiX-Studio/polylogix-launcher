@@ -6,7 +6,12 @@ module.exports = {
     electronBuilder: {
       builderOptions: {
         win: {
-          icon: './src/assets/icon.ico'
+          icon: './src/assets/icon.ico',
+          "publish": [
+            {
+              "provider": "github"
+            }
+          ]
         }
       }
     },
