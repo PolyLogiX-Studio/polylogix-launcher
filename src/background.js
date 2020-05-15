@@ -107,35 +107,63 @@ app.on('ready', async () => {
   createWindow()
 
 
-  dialog.showMessageBox({type:'info', message:isDev+":"+app.getVersion()})
   if (isDev) {
-    
+    dialog.showMessageBox({
+      title: 'Dev Build!',
+      message: 'This is a Dev'
+    })
     console.log('Running in development');
   } else {
+    dialog.showMessageBox({
+      title: 'Checking for Updates',
+      message: 'Checking for Updates...'
+    })
     const server = 'https://polylogix-launcher.now.sh/'
     const url = `${server}/update/${process.platform}/${app.getVersion()}`
   
     autoUpdater.setFeedURL({ url })
-    autoUpdater.on('error', message => {
-      console.error('There was a problem updating the application')
-      console.error(message)
-    })
-    autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-      const dialogOpts = {
-        type: 'info',
-        buttons: ['Restart', 'Later'],
-        title: 'Application Update',
-        message: process.platform === 'win32' ? releaseNotes : releaseName,
-        detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+    let updater
+  autoUpdater.autoDownload = false
+  
+  autoUpdater.on('error', (error) => {
+    dialog.showErrorBox('Error: ', error == null ? "unknown" : (error.stack || error).toString())
+  })
+  
+  autoUpdater.on('update-available', () => {
+    dialog.showMessageBox({
+      type: 'info',
+      title: 'Found Updates',
+      message: 'Found updates, do you want update now?',
+      buttons: ['Sure', 'No']
+    }, (buttonIndex) => {
+      if (buttonIndex === 0) {
+        autoUpdater.downloadUpdate()
       }
-  
-      dialog.showMessageBox(dialogOpts).then((returnValue) => {
-        if (returnValue.response === 0) autoUpdater.quitAndInstall()
-      })
+      else {
+        updater.enabled = true
+        updater = null
+      }
     })
+  })
   
-    //Check for Updates
-    autoUpdater.checkForUpdatesAndNotify()
+  autoUpdater.on('update-not-available', () => {
+    dialog.showMessageBox({
+      title: 'No Updates',
+      message: 'Current version is up-to-date.'
+    })
+    updater.enabled = true
+    updater = null
+  })
+  
+  autoUpdater.on('update-downloaded', () => {
+    dialog.showMessageBox({
+      title: 'Install Updates',
+      message: 'Updates downloaded, application will be quit for update...'
+    }, () => {
+      setImmediate(() => autoUpdater.quitAndInstall())
+    })
+  })
+  autoUpdater.checkForUpdatesAndNotify()
   }
 
 
