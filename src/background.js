@@ -114,14 +114,6 @@ app.on('ready', async () => {
     })
     console.log('Running in development');
   } else {
-    dialog.showMessageBox({
-      title: 'Checking for Updates',
-      message: 'Checking for Updates...'
-    })
-    const server = 'https://polylogix-launcher.now.sh/'
-    const url = `${server}/update/${process.platform}/${app.getVersion()}`
-  
-    autoUpdater.setFeedURL({ url })
     let updater
   autoUpdater.autoDownload = false
   
@@ -163,7 +155,10 @@ app.on('ready', async () => {
       setImmediate(() => autoUpdater.quitAndInstall())
     })
   })
-  autoUpdater.checkForUpdatesAndNotify()
+  if (fs.existsSync(path.resolve(path.dirname(process.execPath), '..', 'update.exe'))){
+    autoUpdater.checkForUpdatesAndNotify()
+  }
+  
   }
 
 

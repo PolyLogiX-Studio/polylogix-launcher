@@ -9,7 +9,9 @@ module.exports = {
           icon: './src/assets/icon.ico',
           "publish": [
             {
-              "provider": "github"
+              "provider": "github",
+              "owner": "PolyLogiX-Studio",
+             "repo": "polylogix-launcher"
             }
           ]
         }

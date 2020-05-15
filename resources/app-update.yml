@@ -1,0 +1,4 @@
+owner: PolyLogiX-Studio
+repo: polylogix-launcher
+provider: github
+updaterCacheDirName: polylogix-launcher-updater
