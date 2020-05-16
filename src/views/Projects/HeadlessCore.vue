@@ -1,5 +1,6 @@
 <template>
   <div class="home-headlesscore">
+    
   </div>
 </template>
 <style>

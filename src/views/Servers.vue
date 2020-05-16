@@ -262,7 +262,7 @@ export default {
       this.loading = false;
       this.dataRaw = servers;
       var filteredData = this.dataRaw.filter(server => {
-        return (false||
+        return (true||
         //Hide Empty
         (
           server.sessionUsers.length > 1 ||
@@ -275,7 +275,7 @@ export default {
       filteredData.forEach(element => {
         element.headlessCORE = false;
         element.serverFull = element.sessionUsers.length >= element.maxUsers;
-        if (element.hostUserId == "U-bombitmanbomb") {
+        if (element.hostUserId == "U-bombitmanbomb") { //Test
           element.headlessCORE = true;
           element.pluginMatchStatus = "success";
           element.plugins = true;

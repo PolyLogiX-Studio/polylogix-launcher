@@ -6,11 +6,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     launchable:false,
-    running:false
+    running:false,
+    downloads:new Array()
   },
   mutations: {
-  },
-  actions: {
+    addDownload(state){
+      console.log("STATE")
+      state.downloads.push("Example")
+    }
+  
   },
   modules: {
   }

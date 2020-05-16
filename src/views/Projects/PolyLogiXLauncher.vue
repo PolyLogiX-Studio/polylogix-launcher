@@ -1,6 +1,6 @@
 <template>
   <div class="home-index">
-   
+   <v-btn @click="addDownload">Download Update</v-btn>
   </div>
 </template>
 <style>
@@ -10,6 +10,12 @@
 
 export default {
   name: "Home-Index",
-  components: {}
+  components: {},
+  methods:{
+    addDownload:function(){
+      console.log("STATE")
+      this.$store.commit('addDownload')
+    }
+  }
 };
 </script>

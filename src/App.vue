@@ -21,7 +21,7 @@
           <v-tab to="/Account"><v-icon>mdi-account</v-icon>My Account</v-tab>
           <v-tab to="/Neos"><v-icon>mdi-microsoft-azure</v-icon>Neos</v-tab>
           <v-tab to="/Settings"><v-icon>mdi-tune-vertical</v-icon>Settings</v-tab>
-          <v-tab to="/Downloads"><v-icon>mdi-download</v-icon>Downloads</v-tab>
+          <v-tab to="/Downloads"><v-badge :content="downloadCount" left overlap color="info" :value="downloadCount>0"><v-icon>mdi-download</v-icon></v-badge>Downloads</v-tab>
           <v-tab to="/About"><v-icon>mdi-information-outline</v-icon>About</v-tab>
         </v-tabs>
       </div>
@@ -60,15 +60,16 @@
 </style>
 <script>
 import electron from 'electron'
-
 export default {
   name: "app",
   data(){
     return {
+      
     }
   },
   components : {},
   computed:{
+    downloadCount: function(){return this.$store.state.downloads.length}
   },
   methods:{
     "minimize":function(){
