@@ -59,7 +59,7 @@
                 <span>{{item.hostUsername}} went Elsewhere {{timeSince(new Date(item.awaySince))}} ago</span>
               </v-tooltip>
 
-              <span>{{item.name}}</span>
+              <span v-html="item.name">{{item.name}}</span>
               <v-tooltip top open-delay="500">
                 <template v-slot:activator="{ on }">
                   <v-icon v-on="on" color="success" v-if="item.verified">mdi-check-decagram</v-icon>
@@ -100,7 +100,7 @@
                 </v-card>
               </v-row>
             </v-container>
-            <div class="serverDetails">{{item.description}}</div>
+            <div class="serverDetails" v-html="item.description"></div>
             <div class="joinButton">
               <v-btn
                 :disabled="item.serverFull"
@@ -290,9 +290,19 @@ export default {
         if (!this.versions.includes(element.neosVersion)) {
           this.versions.push(element.neosVersion);
         }
+        element.name = element.name.replace(/<color=(.*)>(.*)<\/color>/,(match, color, Text)=>{
+          console.log(color, Text)
+          return `<span style="color: ${color}">${Text}</span>`
+        })
+        if (element.description){
+        element.description = element.description.replace(/<color=(.*)>(.*)<\/color>/,(match, color, Text)=>{
+          console.log(color, Text)
+          return `<span style="color: ${color}">${Text}</span>`
+        })
+        }
       });
+
       this.posts = filteredData.reverse();
-      console.log(intervalStore);
 
       if (intervalStore.length > 1) {
         for (let item of intervalStore) {
