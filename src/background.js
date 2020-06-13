@@ -1,6 +1,6 @@
 'use strict'
 import child_process from 'child_process'
-import { app, protocol, BrowserWindow, ipcMain, dialog } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain, dialog, desktopCapturer } from 'electron'
 import {autoUpdater} from 'electron-updater'
 import isDev from 'electron-is-dev'
 import path from 'path'
@@ -51,6 +51,43 @@ function checkNeosDir() {
   }
 
 }
+//Gets Steam Sources For Screen Share
+function getStreamSources() {
+  desktopCapturer.getSources({ types: ['window', 'screen'] }).then(async sources => {
+    for (const source of sources) {
+      if (source.name === 'Electron') {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: {
+              mandatory: {
+                chromeMediaSource: 'desktop',
+                chromeMediaSourceId: source.id,
+                minWidth: 1280,
+                maxWidth: 1280,
+                minHeight: 720,
+                maxHeight: 720
+              }
+            }
+          })
+          handleStream(stream)
+        } catch (e) {
+          dialog.showMessageBox({'type':'error','message':JSON.stringify(e)})
+        }
+        return
+      }
+    }
+  })
+} 
+
+//handel streams
+function handleStream (stream) {
+  const video = document.querySelector('video')
+  video.srcObject = stream
+  video.onloadedmetadata = (e) => video.play()
+}
+
+
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }])
 
