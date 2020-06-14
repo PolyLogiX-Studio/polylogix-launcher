@@ -27,7 +27,8 @@ export default {
         { title: "PolyLogiX Launcher", icon: "mdi-chart-tree", path: "Index" },
         { title: "HeadlessCORE", icon: "mdi-server", path: "Headless" },
         { title: "Gunlight Online", icon: "mdi-pistol", path: "Gunlight" },
-        { title: "NeosDB", icon: "mdi-database-search", path: "NeosDB" }
+        { title: "NeosDB", icon: "mdi-database-search", path: "NeosDB" },
+        { title: "Streaming", icon: "mdi-monitor-screenshot", path: "Streaming" }
       ]
     };
   }

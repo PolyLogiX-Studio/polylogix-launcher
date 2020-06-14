@@ -51,41 +51,6 @@ function checkNeosDir() {
   }
 
 }
-//Gets Steam Sources For Screen Share
-function getStreamSources() {
-  desktopCapturer.getSources({ types: ['window', 'screen'] }).then(async sources => {
-    for (const source of sources) {
-      if (source.name === 'Electron') {
-        try {
-          const stream = await navigator.mediaDevices.getUserMedia({
-            audio: false,
-            video: {
-              mandatory: {
-                chromeMediaSource: 'desktop',
-                chromeMediaSourceId: source.id,
-                minWidth: 1280,
-                maxWidth: 1280,
-                minHeight: 720,
-                maxHeight: 720
-              }
-            }
-          })
-          handleStream(stream)
-        } catch (e) {
-          dialog.showMessageBox({'type':'error','message':JSON.stringify(e)})
-        }
-        return
-      }
-    }
-  })
-} 
-
-//handel streams
-function handleStream (stream) {
-  const video = document.querySelector('video')
-  video.srcObject = stream
-  video.onloadedmetadata = (e) => video.play()
-}
 
 
 // Scheme must be registered before the app is ready
@@ -142,7 +107,7 @@ app.on('ready', async () => {
   //Create Listeners
   
   createWindow()
-
+  
 // Integrate this into UI
   if (isDev) {
     dialog.showMessageBox({
@@ -197,7 +162,6 @@ app.on('ready', async () => {
   
   
   }
-
 
 
 
