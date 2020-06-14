@@ -3,6 +3,7 @@
     <v-container>
       <!--Filtering-->
       <v-card
+      class="pa-md-4 mx-lg-auto"
         minHeight="5em"
       >Displaying {{posts.length}}/{{dataRaw.length}} Servers across {{versions.length}} Neos build{{versions.length>1?'s':''}}.</v-card>
       <v-card minHeight="2em">

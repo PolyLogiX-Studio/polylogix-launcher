@@ -3,6 +3,7 @@
     <v-container>
       <!--Filtering-->
       <v-card
+        class="pa-md-4 mx-lg-auto"
         minHeight="5em"
       >Displaying {{posts.length}}/{{dataRaw.length}} worlds.</v-card>
       <v-card minHeight="2em">
@@ -126,7 +127,7 @@
 .scrollable::-webkit-scrollbar {
   overflow-y: scroll;
   display: block;
-  width: 35px;
+  width: 25px;
   height: 5px;
 }
 
@@ -139,6 +140,7 @@
 /* Handle */
 .scrollable::-webkit-scrollbar-thumb {
   background: #2196f3;
+  border-radius: 10px;
 }
 
 /* Handle on hover */

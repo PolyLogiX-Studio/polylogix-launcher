@@ -13,7 +13,7 @@
       </div> 
       <div class="app-bar-content-nograb">
         <v-tabs background-color="primary">
-          <v-btn color="warning" height="100%" :disabled="$store.launchable==false" @click="launch"><v-icon>mdi-play</v-icon> {{$store.launchable?'Launch Neos':$store.running?'Neos Running':'Launch Neos'}}</v-btn>
+          <v-btn @mouseover="neosbutton= true" @mouseleave="neosbutton= false" color="warning" height="100%" v-bind:disable="$store.launchable==false" @click="launch"><img  v-bind:src="[neosbutton ? 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.gif?size=128' : 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.png?size=128']"  width="20" height="20"> {{$store.launchable?' Neos Is Not Found':$store.running?' Neos Running':' Launch Neos'}}</v-btn>
           <v-tab to="/"><v-icon>mdi-code-braces</v-icon>Projects</v-tab>
           <v-tab to="/Servers"><v-icon>mdi-server</v-icon>Server Browser</v-tab>
           <v-tab to="/Worlds"><v-icon>mdi-earth</v-icon>Worlds</v-tab>
@@ -64,7 +64,7 @@ export default {
   name: "app",
   data(){
     return {
-      
+      neosbutton: false
     }
   },
   components : {},
