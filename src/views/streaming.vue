@@ -7,8 +7,8 @@
           <h2>Source</h2>
         </div>
         <div class="streaming-top-bar">
-          <button @click="Source = 'Neos'; " @mouseover="neosbutton= true" @mouseleave="neosbutton= false"  v-bind:class= "[Source == 'Neos' ? neosbuttonset :neosstreamingtopbarbutton]"><img v-bind:src="[neosbutton ? 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.gif?size=128' : 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.png?size=128']"  width="20" height="20">Neos</button>
-          <button @click="Source = 'Screens'" v-bind:class= "[Source == 'Screens' ? buttonset :streamingtopbarbutton]"> <v-icon>{{ mdimonitor }}</v-icon>Screens</button>
+          <button @click="Source = 'Neos'; " @mouseover="neosbutton= true" @mouseleave="neosbutton= false"  v-bind:class= "[Source == 'Neos' ? neosbuttonset :neosstreamingtopbarbutton]"><img style="position: absolute; left: 5px"  v-bind:src="[neosbutton ? 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.gif?size=128' : 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.png?size=128']"  width="20" height="20">Neos</button>
+          <button @click="Source = 'Screens'" :class= "[Source == 'Screens' ? buttonset :streamingtopbarbutton]"> <v-icon>{{ mdimonitor }}</v-icon>Screens</button>
           <button @click="Source = 'Applications'" v-bind:class= "[Source == 'Applications' ? buttonset : streamingtopbarbutton]"> <v-icon>{{mdiapps}}</v-icon>Application</button>
         </div>
         <div class="streaming-screens-holder">

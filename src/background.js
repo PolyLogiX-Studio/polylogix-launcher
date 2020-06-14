@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 'use strict'
 import child_process from 'child_process'
 import { app, protocol, BrowserWindow, ipcMain, dialog } from 'electron'
@@ -6,22 +5,6 @@ import {autoUpdater} from 'electron-updater'
 import isDev from 'electron-is-dev'
 import path from 'path'
 console.log(process.platform)
-=======
-"use strict";
-import child_process from "child_process";
-import {
-  app,
-  protocol,
-  BrowserWindow,
-  ipcMain,
-  dialog,
-  desktopCapturer,
-} from "electron";
-import { autoUpdater } from "electron-updater";
-import isDev from "electron-is-dev";
-import path from "path";
-console.log(process.platform);
->>>>>>> Stashed changes
 import {
   createProtocol,
   /* installVueDevtools */
@@ -87,10 +70,6 @@ function checkNeosDir() {
     }
   }
 }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
   { scheme: "app", privileges: { secure: true, standard: true } },
@@ -149,21 +128,14 @@ app.on("activate", () => {
 // Some APIs can only be used after this event occurs.
 app.on("ready", async () => {
   //Create Listeners
-<<<<<<< Updated upstream
-  
-  createWindow()
-
-// Integrate this into UI
-=======
 
   createWindow();
 
   // Integrate this into UI
->>>>>>> Stashed changes
   if (isDev) {
     dialog.showMessageBox({
       title: "Dev Build!",
-      message: "This is a Dev",
+      message: "This is a Dev Build and I like Trains",
     });
     console.log("Running in development");
   } else {
@@ -206,10 +178,6 @@ app.on("ready", async () => {
       updater = null;
     });
 
-<<<<<<< Updated upstream
-
-})
-=======
     autoUpdater.on("update-downloaded", () => {
       dialog.showMessageBox(
         {
@@ -224,7 +192,6 @@ app.on("ready", async () => {
     autoUpdater.checkForUpdatesAndNotify();
   }
 });
->>>>>>> Stashed changes
 
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
@@ -308,12 +275,12 @@ function createListeners(win) {
         { detached: true }
       );
     }
-    Vuex.Store.running = true
+    ipcMain.send("neosVrState", true)
     win.minimize();
     Neos.on("close", () => {
       win.maximize();
       console.log('neos close')
-      Vuex.Store.running = false
+      ipcMain.send("neosVrState", false)
     });
   }
 

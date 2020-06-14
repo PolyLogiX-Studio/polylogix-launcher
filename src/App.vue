@@ -13,13 +13,11 @@
       </div> 
       <div class="app-bar-content-nograb">
         <v-tabs background-color="primary">
-          <v-btn @mouseover="neosbutton= true" @mouseleave="neosbutton= false" color="warning" height="100%" v-bind:disable="$store.launchable==false" @click="launch"><img  v-bind:src="[neosbutton ? 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.gif?size=128' : 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.png?size=128']"  width="20" height="20"> {{$store.launchable?' Neos Is Not Found':$store.running?' Neos Running':' Launch Neos'}}</v-btn>
-          <v-tab to="/"><v-icon>mdi-code-braces</v-icon>Projects</v-tab>
+          <v-btn @mouseleave="neosbutton = false" color="warning" height="100%" v-bind:disable="$store.launchable==false" @click="launch" ><img   v-bind:src="[neosbutton ? 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.gif?size=128' : 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.png?size=128']"  width="20" height="20"> {{$store.launchable?' Neos Is Not Found':$store.running?' Neos Running':' Launch Neos'}}</v-btn>
+          <v-tab to="/"><v-icon>mdi-view-grid  </v-icon>Dashboard</v-tab>
           <v-tab to="/Servers"><v-icon>mdi-server</v-icon>Server Browser</v-tab>
+          <v-tab to="/Streaming"><v-icon>mdi-monitor-screenshot</v-icon>Streaming</v-tab>
           <v-tab to="/Worlds"><v-icon>mdi-earth</v-icon>Worlds</v-tab>
-          <v-tab to="/Thing"><v-icon>mdi-toy-brick-plus</v-icon>Plugins</v-tab>
-          <v-tab to="/Account"><v-icon>mdi-account</v-icon>My Account</v-tab>
-          <v-tab to="/Neos"><v-icon>mdi-microsoft-azure</v-icon>Neos</v-tab>
           <v-tab to="/Settings"><v-icon>mdi-tune-vertical</v-icon>Settings</v-tab>
           <v-tab to="/Downloads"><v-badge :content="downloadCount" left overlap color="info" :value="downloadCount>0"><v-icon>mdi-download</v-icon></v-badge>Downloads</v-tab>
           <v-tab to="/About"><v-icon>mdi-information-outline</v-icon>About</v-tab>
@@ -82,6 +80,7 @@ export default {
       electron.ipcRenderer.send("windowCommand","exit")
     },
     "launch":function(){
+      this.neosbutton= true;
       electron.ipcRenderer.send("LAUNCH-NEOS")
     }
   }
