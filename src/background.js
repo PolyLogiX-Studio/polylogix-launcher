@@ -79,13 +79,18 @@ protocol.registerSchemesAsPrivileged([
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
+    webSecurity: false,
+    transparent: false,
+    backgroundColor: "#171614",
+    maxHeight: 9999999,
+    maxWidth: 99999999,
+    maximizable: true,
     minWidth: 1600,
     minHeight: 800,
     resizable: true,
     frame: false,
     webPreferences: {
-      nodeIntegration: true,
-      "web-security": false,
+      nodeIntegration: true
     },
   });
 
@@ -212,7 +217,6 @@ if (isDevelopment) {
 ipcMain.on("lauchable", (event) => {
   event.reply("lauchable", neosDir != null)
 });
-
 function createListeners(win) {
   ipcMain.on("LAUNCH-NEOS", (event) => {
     LaunchNeos(event);
@@ -223,8 +227,11 @@ function createListeners(win) {
         return win.minimize();
 
       case "maximize":
-        if (win.isMaximized()) return win.unmaximize();
-        else return win.maximize();
+        if(win.isMaximized()){
+          return  win.restore()
+      } else {
+        return win.maximize()
+      }
 
       case "exit":
         return win.close();
@@ -307,7 +314,13 @@ function createListeners(win) {
   });
 }
 
-
+//let myNotification = new Notification('Title', {
+//  body: 'Lorem Ipsum Dolor Sit Amet'
+//})
+//
+//myNotification.onclick = () => {
+//  console.log('Notification clicked')
+//}
 
 function createMenu() {
     

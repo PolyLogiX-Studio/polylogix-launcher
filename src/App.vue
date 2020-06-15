@@ -16,8 +16,8 @@
           <v-btn @mouseleave="neosbutton = false" color="warning" height="100%" :disabled="$store.launchable == false || $store.running == true" @click="launch" ><img   v-bind:src="[neosbutton ? 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.gif?size=128' : 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.png?size=128']"  width="20" height="20"> {{$store.running? ' Neos Running':$store.launchable?' Launch Neos':' Neos Is Not Found'}}</v-btn>
           <v-tab to="/"><v-icon>mdi-view-grid  </v-icon>Dashboard</v-tab>
           <v-tab to="/Servers"><v-icon>mdi-server</v-icon>Server Browser</v-tab>
-          <v-tab to="/Streaming"><v-icon>mdi-monitor-screenshot</v-icon>Streaming</v-tab>
           <v-tab to="/Worlds"><v-icon>mdi-earth</v-icon>Worlds</v-tab>
+          <v-tab to="/Streaming"><v-icon>mdi-monitor-screenshot</v-icon>Streaming</v-tab>
           <v-tab to="/Settings"><v-icon>mdi-tune-vertical</v-icon>Settings</v-tab>
           <v-tab to="/Downloads"><v-badge :content="downloadCount" left overlap color="info" :value="downloadCount>0"><v-icon>mdi-download</v-icon></v-badge>Downloads</v-tab>
           <v-tab to="/About"><v-icon>mdi-information-outline</v-icon>About</v-tab>
