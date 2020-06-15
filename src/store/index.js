@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {ipcRenderer} from "electron"
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const Store = new Vuex.Store({
   state: {
-    launchable:false,
+    launchable: false,
     running:false,
     downloads:new Array()
   },
@@ -19,3 +20,18 @@ export default new Vuex.Store({
   modules: {
   }
 })
+export default Store
+ipcRenderer.send("lauchable")
+ipcRenderer.on("lauchable",(event , result)=>{
+  if(result){
+    console.log("neos is found")
+  } else {
+    console.log("neos is not found")
+  }
+  Store.launchable = result
+})
+
+ipcRenderer.on("running",(event , result)=>{
+  Store.running = result
+})
+

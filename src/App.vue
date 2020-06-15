@@ -13,7 +13,7 @@
       </div> 
       <div class="app-bar-content-nograb">
         <v-tabs background-color="primary">
-          <v-btn @mouseleave="neosbutton = false" color="warning" height="100%" v-bind:disable="$store.launchable==false" @click="launch" ><img   v-bind:src="[neosbutton ? 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.gif?size=128' : 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.png?size=128']"  width="20" height="20"> {{$store.launchable?' Neos Is Not Found':$store.running?' Neos Running':' Launch Neos'}}</v-btn>
+          <v-btn @mouseleave="neosbutton = false" color="warning" height="100%" :disabled="$store.launchable == false || $store.running == true" @click="launch" ><img   v-bind:src="[neosbutton ? 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.gif?size=128' : 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.png?size=128']"  width="20" height="20"> {{$store.running? ' Neos Running':$store.launchable?' Launch Neos':' Neos Is Not Found'}}</v-btn>
           <v-tab to="/"><v-icon>mdi-view-grid  </v-icon>Dashboard</v-tab>
           <v-tab to="/Servers"><v-icon>mdi-server</v-icon>Server Browser</v-tab>
           <v-tab to="/Streaming"><v-icon>mdi-monitor-screenshot</v-icon>Streaming</v-tab>

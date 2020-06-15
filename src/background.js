@@ -1,6 +1,6 @@
 'use strict'
 import child_process from 'child_process'
-import { app, protocol, BrowserWindow, ipcMain, dialog } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain, dialog, Menu, Tray ,Notification} from 'electron'
 import {autoUpdater} from 'electron-updater'
 import isDev from 'electron-is-dev'
 import path from 'path'
@@ -30,6 +30,7 @@ if (!neosDir) {
     checkNeosDir();
   }
 }
+const iconpath = './src/assets/logo.png'
 function checkNeosDir() {
   if (process.platform == "win32") {
     if (
@@ -130,7 +131,7 @@ app.on("ready", async () => {
   //Create Listeners
 
   createWindow();
-
+  createMenu()
   // Integrate this into UI
   if (isDev) {
     dialog.showMessageBox({
@@ -207,9 +208,14 @@ if (isDevelopment) {
     });
   }
 }
+
+ipcMain.on("lauchable", (event) => {
+  event.reply("lauchable", neosDir != null)
+});
+
 function createListeners(win) {
-  ipcMain.on("LAUNCH-NEOS", () => {
-    LaunchNeos();
+  ipcMain.on("LAUNCH-NEOS", (event) => {
+    LaunchNeos(event);
   });
   ipcMain.on("windowCommand", (e, cmd) => {
     switch (cmd) {
@@ -261,7 +267,7 @@ function createListeners(win) {
       });
   });
   var Neos = null;
-  function LaunchNeos() {
+  function LaunchNeos(event) {
     if (process.platform == "win32") {
       Neos = child_process.spawn(
         path.join(store.get("NeosDir"), "Neos.exe"),
@@ -275,12 +281,12 @@ function createListeners(win) {
         { detached: true }
       );
     }
-    ipcMain.send("neosVrState", true)
+    event.reply("running", true)
     win.minimize();
     Neos.on("close", () => {
       win.maximize();
       console.log('neos close')
-      ipcMain.send("neosVrState", false)
+      event.reply("running", false)
     });
   }
 
@@ -300,3 +306,118 @@ function createListeners(win) {
     }, 5000);
   });
 }
+
+
+
+function createMenu() {
+    
+  if(process.platform === 'darwin') {
+
+      // Extend default included application menu to continue support for quit keyboard shortcut
+      let applicationSubMenu = {
+          label: 'Application',
+          submenu: [{
+              label: 'About Application',
+              selector: 'orderFrontStandardAboutPanel:'
+          }, {
+              type: 'separator'
+          }, {
+              label: 'Quit',
+              accelerator: 'Command+Q',
+              click: () => {
+                  app.quit()
+              }
+          }]
+      }
+
+      // New edit menu adds support for text-editing keyboard shortcuts
+      let editSubMenu = {
+          label: 'Edit',
+          submenu: [{
+              label: 'Undo',
+              accelerator: 'CmdOrCtrl+Z',
+              selector: 'undo:'
+          }, {
+              label: 'Redo',
+              accelerator: 'Shift+CmdOrCtrl+Z',
+              selector: 'redo:'
+          }, {
+              type: 'separator'
+          }, {
+              label: 'Cut',
+              accelerator: 'CmdOrCtrl+X',
+              selector: 'cut:'
+          }, {
+              label: 'Copy',
+              accelerator: 'CmdOrCtrl+C',
+              selector: 'copy:'
+          }, {
+              label: 'Paste',
+              accelerator: 'CmdOrCtrl+V',
+              selector: 'paste:'
+          }, {
+              label: 'Select All',
+              accelerator: 'CmdOrCtrl+A',
+              selector: 'selectAll:'
+          }]
+      }
+
+      // Bundle submenus into a single template and build a menu object with it
+      let menuTemplate = [applicationSubMenu, editSubMenu]
+      let menuObject = Menu.buildFromTemplate(menuTemplate)
+
+      // Assign it to the application
+      Menu.setApplicationMenu(menuObject)
+
+  }
+
+}
+
+let apcon = null
+app.on('ready', () => {
+  var conextMenu = Menu.buildFromTemplate([
+      {
+          label: 'Exit',
+          click: () => {
+              app.quit()
+          },
+          type: 'normal'
+
+      }
+      
+  ]);
+  apcon = new Tray(iconpath);
+  apcon.setContextMenu(conextMenu)
+  apcon.setToolTip("Polylogix Launcher");
+  apcon.on('click', () => {
+      
+          if (win.isMinimized()){ win.restore()
+          win.focus()}
+       else {
+              win.show()
+      }
+  })
+})
+
+
+
+const gotTheLock = app.requestSingleInstanceLock()
+
+if (!gotTheLock) {
+    app.quit()
+} else {
+    app.on('second-instance', (event, commandLine, workingDirectory) => {
+        // Someone tried to run a second instance, we should focus our window.
+        if (win) {
+            if (win.isMinimized()) win.restore()
+            win.focus()
+        } else {
+            if (win == null) {
+                createMenu()
+                createWindow()
+            }
+        }
+    }
+    )
+}
+
