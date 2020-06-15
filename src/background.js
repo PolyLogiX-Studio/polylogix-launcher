@@ -12,6 +12,12 @@ import {
 const isDevelopment = process.env.NODE_ENV !== "production";
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
+
+import os from 'os'
+import Neos from'@bombitmanbomb/neosjs'
+const neos = new Neos();
+
+
 let win;
 import fetch from "node-fetch";
 import Store from "electron-store";
@@ -213,8 +219,9 @@ if (isDevelopment) {
     });
   }
 }
-
+var globalevent
 ipcMain.on("lauchable", (event) => {
+  globalevent = event
   event.reply("lauchable", neosDir != null)
 });
 function createListeners(win) {
@@ -412,7 +419,26 @@ app.on('ready', () => {
   })
 })
 
+neos.on("login",(obj)=>{
+  globalevent.reply('userlogedin', obj.CurrentUser )
+  console.log(obj.CurrentUser, obj.CurrentSession) // Log the current user and Session
+})
 
+neos.on("logout", () => {
+  globalevent.reply('userlogedin', null )
+  console.log("User Logged Out");
+});
+
+ipcMain.on('login',(event,arg)=>{
+  userLogin(arg.password , arg.username, arg.rememberme)
+})
+
+function userLogin(password , username, rememberme){
+  info = os.networkInterfaces().Ethernet();
+  if(typeof password === 'string'&& typeof username === 'string'){
+  neos.Login(username,password,"",info[0].address,rememberme) 
+  }
+}
 
 const gotTheLock = app.requestSingleInstanceLock()
 

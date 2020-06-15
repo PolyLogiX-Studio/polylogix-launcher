@@ -2,10 +2,12 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import {ipcRenderer} from "electron"
 
+
 Vue.use(Vuex)
 
 const Store = new Vuex.Store({
   state: {
+    User:null,
     launchable: false,
     running:false,
     downloads:new Array()
@@ -15,12 +17,14 @@ const Store = new Vuex.Store({
       console.log("STATE")
       state.downloads.push("Example")
     }
-  
   },
   modules: {
   }
 })
 export default Store
+
+
+
 ipcRenderer.send("lauchable")
 ipcRenderer.on("lauchable",(event , result)=>{
   if(result){
@@ -34,4 +38,9 @@ ipcRenderer.on("lauchable",(event , result)=>{
 ipcRenderer.on("running",(event , result)=>{
   Store.running = result
 })
+ipcRenderer.on("obj.CurrentUser",(event,result)=>{
+  Store.User = result
+})
+
+
 
