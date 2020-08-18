@@ -14,8 +14,14 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 // be closed automatically when the JavaScript object is garbage collected.
 
 import os from 'os'
-import Neos from'@bombitmanbomb/neosjs'
+const Neos = require('@bombitmanbomb/neosjs')
 const neos = new Neos();
+import {machineId} from 'node-machine-id';
+let machineIdis = null
+machineId().then((id) => {
+machineIdis = id
+})
+
 
 
 let win;
@@ -434,9 +440,9 @@ ipcMain.on('login',(event,arg)=>{
 })
 
 function userLogin(password , username, rememberme){
-  info = os.networkInterfaces().Ethernet();
+  console.log('userLogin' + username)
   if(typeof password === 'string'&& typeof username === 'string'){
-  neos.Login(username,password,"",info[0].address,rememberme) 
+  neos.Login(username,password,"",machineIdis,rememberme) 
   }
 }
 

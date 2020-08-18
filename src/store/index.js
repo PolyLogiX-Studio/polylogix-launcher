@@ -39,6 +39,7 @@ ipcRenderer.on("running",(event , result)=>{
   Store.running = result
 })
 ipcRenderer.on("obj.CurrentUser",(event,result)=>{
+  console.log(result)
   Store.User = result
 })
 

@@ -1,87 +1,59 @@
 <template>
-<div>
-  <div v-show="$store.User != null" class="home">
-    <div class="sidebar-wrap">
-      <ProjectsSideBar />
+  <div>
+    <div v-show="$store.User != null" class="home">
+      <div class="sidebar-wrap">
+        <ProjectsSideBar />
+      </div>
+      <router-view />
     </div>
-    <router-view />
-  </div>
-  <div v-show="$store.User == null" >
-  <div class="logincontanor">
-<form autocomplete='off' class='form'>
-  <div class='control'>
-    <h1>
-      Sign In
-    </h1>
-  </div>
-  <div class='control block-cube block-input'>
-    <input name='username' placeholder='Username' type='text'>
-    <div class='bg-top'>
-      <div class='bg-inner'></div>
-    </div>
-    <div class='bg-right'>
-      <div class='bg-inner'></div>
-    </div>
-    <div class='bg'>
-      <div class='bg-inner'></div>
+    <div v-show="$store.User == null">
+      <div class="logincontanor">
+        <div class="control">
+          <h1>Sign In</h1>
+        </div>
+        <input v-model="username" name="username" placeholder="Username" type="text" />
+        <input v-model="password" name="password" placeholder="Password" type="password" />
+        <button v-on:click="loginuser">
+          <div class="text">Log In</div>
+        </button>
+      </div>
     </div>
   </div>
-  <div class='control block-cube block-input'>
-    <input name='password' placeholder='Password' type='password'>
-    <div class='bg-top'>
-      <div class='bg-inner'></div>
-    </div>
-    <div class='bg-right'>
-      <div class='bg-inner'></div>
-    </div>
-    <div class='bg'>
-      <div class='bg-inner'></div>
-    </div>
-  </div>
-  <button class='btn block-cube block-cube-hover' type='button'>
-    <div class='bg-top'>
-      <div class='bg-inner'></div>
-    </div>
-    <div class='bg-right'>
-      <div class='bg-inner'></div>
-    </div>
-    <div class='bg'>
-      <div class='bg-inner'></div>
-    </div>
-    <div class='text'>
-      Log In
-    </div>
-  </button>
-  <div class='credits'>
-    <a href='https://codepen.io/marko-zub/' target='_blank'>
-      My other codepens
-    </a>
-  </div>
-</form>
-
-  </div>
-  </div>
-</div>
 </template>
 <style>
 .sidebar-wrap {
   float: left;
   opacity: 0.9;
 }
-
 </style>
 <script>
 // @ is an alias to /src
 import ProjectsSideBar from "@/components/ProjectsSideBar.vue";
+import {ipcRenderer} from "electron"
 
 export default {
   name: "Projects",
   components: {
     ProjectsSideBar
   },
-  mounted(){
-      
+  data() {
+        return {
+            username: "",
+            password: ""
+        }
+  },
+  mounted() {},
+  methods:{
+      loginuser: function(){
+          console.log("log user" + this.username)
+      ipcRenderer.send("login",{
+        password: this.password,
+        username: this.username,
+        rememberme: false
+      })
+      }
   }
 };
+
 
 </script>
