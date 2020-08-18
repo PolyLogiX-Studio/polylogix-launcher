@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div v-show="$store.User != null" class="home">
+    <div v-show="true" class="home">
       <div class="sidebar-wrap">
         <ProjectsSideBar />
       </div>
       <router-view />
     </div>
-    <div v-show="$store.User == null">
+    <div v-show="true">
       <div class="logincontanor">
         <div class="control">
           <h1>Sign In</h1>

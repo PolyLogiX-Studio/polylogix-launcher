@@ -14,8 +14,7 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 // be closed automatically when the JavaScript object is garbage collected.
 
 import os from 'os'
-const Neos = require('@bombitmanbomb/neosjs')
-const neos = new Neos();
+
 import {machineId} from 'node-machine-id';
 let machineIdis = null
 machineId().then((id) => {
@@ -425,15 +424,7 @@ app.on('ready', () => {
   })
 })
 
-neos.on("login",(obj)=>{
-  globalevent.reply('userlogedin', obj.CurrentUser )
-  console.log(obj.CurrentUser, obj.CurrentSession) // Log the current user and Session
-})
 
-neos.on("logout", () => {
-  globalevent.reply('userlogedin', null )
-  console.log("User Logged Out");
-});
 
 ipcMain.on('login',(event,arg)=>{
   userLogin(arg.password , arg.username, arg.rememberme)
@@ -442,7 +433,7 @@ ipcMain.on('login',(event,arg)=>{
 function userLogin(password , username, rememberme){
   console.log('userLogin' + username)
   if(typeof password === 'string'&& typeof username === 'string'){
-  neos.Login(username,password,"",machineIdis,rememberme) 
+
   }
 }
 

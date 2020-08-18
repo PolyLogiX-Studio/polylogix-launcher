@@ -13,14 +13,14 @@
       </div> 
       <div class="app-bar-content-nograb">
         <v-tabs background-color="primary">
-          <v-btn v-show="$store.User != null" @mouseleave="neosbutton = false" color="warning" height="100%" :disabled="$store.launchable == false || $store.running == true" @click="launch" ><img   v-bind:src="[neosbutton ? 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.gif?size=128' : 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.png?size=128']"  width="20" height="20"> {{$store.running? ' Neos Running':$store.launchable?' Launch Neos':' Neos Is Not Found'}}</v-btn>
+          <v-btn v-show="true" @mouseleave="neosbutton = false" color="warning" height="100%" :disabled="$store.launchable == false || $store.running == true" @click="launch" ><img   v-bind:src="[neosbutton ? 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.gif?size=128' : 'https://cdn.discordapp.com/icons/402159838827905024/a_8139162900c446123e41cb8b02b30ffe.png?size=128']"  width="20" height="20"> {{$store.running? ' Neos Running':$store.launchable?' Launch Neos':' Neos Is Not Found'}}</v-btn>
           <v-tab  to="/"><v-icon>mdi-view-grid  </v-icon>Dashboard</v-tab>
-          <v-tab v-show="$store.User != null" to="/Servers"><v-icon>mdi-server</v-icon>Server Browser</v-tab>
-          <v-tab v-show="$store.User != null" to="/Worlds"><v-icon>mdi-earth</v-icon>Worlds</v-tab>
-          <v-tab v-show="$store.User != null" to="/Streaming"><v-icon>mdi-monitor-screenshot</v-icon>Streaming</v-tab>
-          <v-tab v-show="$store.User != null" to="/Settings"><v-icon>mdi-tune-vertical</v-icon>Settings</v-tab>
-          <v-tab v-show="$store.User != null" to="/Downloads"><v-badge :content="downloadCount" left overlap color="info" :value="downloadCount>0"><v-icon>mdi-download</v-icon></v-badge>Downloads</v-tab>
-          <v-tab v-show="$store.User != null" to="/About"><v-icon>mdi-information-outline</v-icon>About</v-tab>
+          <v-tab v-show="true" to="/Servers"><v-icon>mdi-server</v-icon>Server Browser</v-tab>
+          <v-tab v-show="true" to="/Worlds"><v-icon>mdi-earth</v-icon>Worlds</v-tab>
+          <v-tab v-show="true" to="/Streaming"><v-icon>mdi-monitor-screenshot</v-icon>Streaming</v-tab>
+          <v-tab v-show="true" to="/Settings"><v-icon>mdi-tune-vertical</v-icon>Settings</v-tab>
+          <v-tab v-show="true" to="/Downloads"><v-badge :content="downloadCount" left overlap color="info" :value="downloadCount>0"><v-icon>mdi-download</v-icon></v-badge>Downloads</v-tab>
+          <v-tab v-show="true" to="/About"><v-icon>mdi-information-outline</v-icon>About</v-tab>
         </v-tabs>
       </div>
       
@@ -37,9 +37,9 @@
       </span>
     </v-app-bar>
 
-    <v-content >
+    <v-maain >
       <router-view />
-    </v-content>
+    </v-maain>
   </v-app>
 </template>
 <style>
