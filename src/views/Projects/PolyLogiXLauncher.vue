@@ -14,7 +14,7 @@ export default {
   methods:{
     addDownload:function(){
       console.log("STATE")
-      this.$store.commit('addDownload')
+      this.$store.dispatch('addDownload')
     }
   }
 };
