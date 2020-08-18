@@ -37,9 +37,9 @@
       </span>
     </v-app-bar>
 
-    <v-maain >
+    <v-content >
       <router-view />
-    </v-maain>
+    </v-content>
   </v-app>
 </template>
 <style>
