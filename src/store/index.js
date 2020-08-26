@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import { /**createPersistedState, **/createSharedMutations } from "vuex-electron"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -16,6 +16,15 @@ export default new Vuex.Store({
     }
   
   },
+  actions: {
+    addDownload(context){
+      context.commit('addDownload')
+    }
+  },
   modules: {
-  }
+  },
+  plugins: [
+    //createPersistedState(),
+    createSharedMutations()
+  ]
 })

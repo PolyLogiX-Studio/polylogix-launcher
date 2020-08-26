@@ -16,9 +16,9 @@ let win
 import fetch from 'node-fetch'
 import Store from 'electron-store'
 import fs from 'fs'
-const store = new Store({ fileExtension: "", name: "dat", migrations: require("./db_migrations") });
+const el_store = new Store({ fileExtension: "", name: "dat", migrations: require("./db_migrations") });
 import VDF from './vdfParser'
-var neosDir = store.get("NeosDir")
+var neosDir = el_store.get("NeosDir")
 if (!neosDir) {
   checkNeosDir()
 } else {
@@ -45,7 +45,7 @@ function checkNeosDir() {
       } else {
         console.log("Found Neos at " + neosdir)
         neosDir = neosdir
-        store.set("NeosDir", neosdir);
+        el_store.set("NeosDir", neosdir);
       }
     }
   }
@@ -99,68 +99,71 @@ app.on('activate', () => {
     createWindow()
   }
 })
-
+import store from "./store"
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', async () => {
   //Create Listeners
-  
+
   createWindow()
-  
-// Integrate this into UI
   if (isDev) {
     dialog.showMessageBox({
-      title: 'Dev Build!',
-      message: 'This is a Dev'
-    })
-    console.log('Running in development');
-  } else {
-    let updater
-  autoUpdater.autoDownload = false
-  autoUpdater.fullChangelog = true,
-  autoUpdater.on('error', (error) => {
-    dialog.showMessageBox({'type':'error','message':JSON.stringify(error.stack)})
-    //dialog.showErrorBox('Error: ', error == null ? "unknown" : (error.stack || error).toString())
-  })
-  
-  autoUpdater.on('update-available', () => {
-    dialog.showMessageBox({
       type: 'info',
-      title: 'Found Updates',
-      message: 'Found updates, do you want update now?' ,
+      title: 'Fake Updates',
+      message: 'Found updates, do you want update now?',
       buttons: ['Sure', 'No']
     }, (buttonIndex) => {
       if (buttonIndex === 0) {
-        autoUpdater.downloadUpdate()
-      }
-      else {
-        updater.enabled = true
-        updater = null
+        store.dispatch('addDownload')
       }
     })
-  })
-  
-  autoUpdater.on('update-not-available', () => {
-    dialog.showMessageBox({
-      title: 'No Updates',
-      message: 'Current version is up-to-date.'
+  } else {
+    let updater
+    autoUpdater.autoDownload = false
+    autoUpdater.fullChangelog = true,
+      autoUpdater.on('error', (error) => {
+        dialog.showMessageBox({ 'type': 'error', 'message': JSON.stringify(error.stack) })
+        //dialog.showErrorBox('Error: ', error == null ? "unknown" : (error.stack || error).toString())
+      })
+
+    autoUpdater.on('update-available', () => {
+      dialog.showMessageBox({
+        type: 'info',
+        title: 'Found Updates',
+        message: 'Found updates, do you want update now?',
+        buttons: ['Sure', 'No']
+      }, (buttonIndex) => {
+        if (buttonIndex === 0) {
+          autoUpdater.downloadUpdate()
+        }
+        else {
+          updater.enabled = true
+          updater = null
+        }
+      })
     })
-    updater.enabled = true
-    updater = null
-  })
-  
-  autoUpdater.on('update-downloaded', () => {
-    dialog.showMessageBox({
-      title: 'Install Updates',
-      message: 'Updates downloaded, application will be quit for update...'
-    }, () => {
-      setImmediate(() => autoUpdater.quitAndInstall())
+
+    autoUpdater.on('update-not-available', () => {
+      dialog.showMessageBox({
+        title: 'No Updates',
+        message: 'Current version is up-to-date.'
+      })
+      updater.enabled = true
+      updater = null
     })
-  })
+
+    autoUpdater.on('update-downloaded', () => {
+      dialog.showMessageBox({
+        title: 'Install Updates',
+        message: 'Updates downloaded, application will be quit for update...'
+      }, () => {
+        setImmediate(() => autoUpdater.quitAndInstall())
+      })
+    })
     autoUpdater.checkForUpdatesAndNotify()
-  
-  
+
+
   }
 
 
@@ -236,10 +239,10 @@ function createListeners(win) {
   var Neos = null
   function LaunchNeos() {
     if (process.platform == "win32") {
-      Neos = child_process.spawn(path.join(store.get("NeosDir"), "Neos.exe"), [], { detached: true })
+      Neos = child_process.spawn(path.join(el_store.get("NeosDir"), "Neos.exe"), [], { detached: true })
     }
     else {
-      Neos = child_process.spawn("mono", [path.join(store.get("NeosDir"), "Neos.exe")], { detached: true })
+      Neos = child_process.spawn("mono", [path.join(el_store.get("NeosDir"), "Neos.exe")], { detached: true })
     }
     win.minimize()
     Neos.on('close', () => {
