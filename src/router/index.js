@@ -50,6 +50,11 @@ const routes = [
     path: '/About',
     name: 'About',
     component: () => import('../views/About.vue')
+  },
+  {
+    path: '/Streaming',
+    name: 'Streaming',
+    component: () => import('../views/streaming.vue')
   }
 ]
 
