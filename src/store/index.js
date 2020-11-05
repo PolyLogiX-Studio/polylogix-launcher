@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { /**createPersistedState, **/createSharedMutations } from "vuex-electron"
+import {ipcRenderer} from "electron"
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const Store = new Vuex.Store({
   state: {
-    launchable:false,
+    User:null,
+    launchable: false,
     running:false,
     downloads:new Array()
   },
@@ -14,7 +16,6 @@ export default new Vuex.Store({
       console.log("STATE")
       state.downloads.push("Example")
     }
-  
   },
   actions: {
     addDownload(context){
@@ -28,3 +29,27 @@ export default new Vuex.Store({
     createSharedMutations()
   ]
 })
+export default Store
+
+
+
+ipcRenderer.send("lauchable")
+ipcRenderer.on("lauchable",(event , result)=>{
+  if(result){
+    console.log("neos is found")
+  } else {
+    console.log("neos is not found")
+  }
+  Store.launchable = result
+})
+
+ipcRenderer.on("running",(event , result)=>{
+  Store.running = result
+})
+ipcRenderer.on("obj.CurrentUser",(event,result)=>{
+  console.log(result)
+  Store.User = result
+})
+
+
+

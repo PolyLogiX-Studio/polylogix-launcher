@@ -28,6 +28,11 @@ const routes = [
         name: "Home-NeosDB",
         path: "NeosDB",
         component: () => import("../views/Projects/NeosDB.vue")
+      },
+      {
+        name: "Home-Streaming",
+        path: "Streaming",
+        component: () => import("../views/Projects/streaming.vue")
       }
     ],
     component: () => import('../views/Projects.vue')
@@ -45,6 +50,11 @@ const routes = [
     path: '/About',
     name: 'About',
     component: () => import('../views/About.vue')
+  },
+  {
+    path: '/Streaming',
+    name: 'Streaming',
+    component: () => import('../views/streaming.vue')
   }
 ]
 
