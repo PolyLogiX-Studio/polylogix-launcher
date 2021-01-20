@@ -50,11 +50,26 @@ const routes = [
     path: '/About',
     name: 'About',
     component: () => import('../views/About.vue')
+<<<<<<< Updated upstream
   },
   {
     path: '/Streaming',
     name: 'Streaming',
     component: () => import('../views/streaming.vue')
+=======
+  },{
+    path: '/Settings',
+    name: 'Settings',
+    children: [
+      {
+        name: "Settings-Account",
+        path: "Index",
+        alias: "",
+        component: () => import("../views/Settings/Account.vue")
+      }
+    ],
+    component: () => import('../views/Projects.vue')
+>>>>>>> Stashed changes
   }
 ]
 
